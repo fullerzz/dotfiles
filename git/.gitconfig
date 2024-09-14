@@ -1,0 +1,27 @@
+[user]
+	email = zach.fuller1222@gmail.com
+	name = Zach Fuller
+[init]
+	defaultBranch = main
+[core]
+	editor = vim
+[push]
+	autoSetupRemote = true
+[commit]
+	verbose = true
+	gpgsign = false
+[merge]
+	conflictStyle = zdiff3
+[rebase]
+	autosquash = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[diff]
+	algorithm = histogram
+[pull]
+	rebase = true
+[color]
+	ui = true
+[help]
+	autocorrect = 10
