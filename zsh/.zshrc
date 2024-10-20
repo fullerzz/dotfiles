@@ -6,6 +6,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # zsh-autocomplete
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# Don't show suggesstions for git commands
+zstyle ':autocomplete:*' ignored-input 'git *'
+zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
 
 #ZSH_THEME="spaceship"
 # Uncomment the following line to use case-sensitive completion.
@@ -19,9 +22,6 @@ source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 plugins=(git poetry zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-
-# zsh-autocomplete
-#source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # User configuration
 export GOROOT=/usr/local/go
