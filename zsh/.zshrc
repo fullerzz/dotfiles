@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:/opt/nvim-linux64/bin:$PATH
+export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -75,9 +75,10 @@ export AWS_DEFAULT_REGION="us-west-1"
 eval "$(starship init zsh)"
 
 # fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# neovim
+export PATH=/opt/nvim-linux64/bin:$PATH
 
 # nerdfetch
 nerdfetch
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
