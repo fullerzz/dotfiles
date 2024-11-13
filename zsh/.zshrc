@@ -10,16 +10,9 @@ source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 zstyle ':autocomplete:*' ignored-input 'git *'
 zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
 
-#ZSH_THEME="spaceship"
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git poetry zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -30,15 +23,13 @@ export PATH=/usr/local/go/bin:$GOPATH/bin:/home/zach/.local/bin:$PATH
 # PATH fix from SO https://stackoverflow.com/questions/39311147/cannot-run-npm-commands
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
 alias python=python3
-alias python3.13=~/Python3.13/cpython-3.13.0rc1/python
-alias py3.13=python3.13
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+#autoload -U +X bashcompinit && bashcompinit
+#complete -o nospace -C /usr/bin/terraform terraform
 
 # bun completions
 [ -s "/home/zach/.bun/_bun" ] && source "/home/zach/.bun/_bun"
