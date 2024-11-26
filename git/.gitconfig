@@ -5,6 +5,9 @@
 	defaultBranch = main
 [core]
 	editor = vim
+[fetch]
+	prune = true
+	writeCommitGraph = true
 [push]
 	autoSetupRemote = true
 [commit]
