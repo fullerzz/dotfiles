@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
 zstyle ':autocomplete:*' ignored-input 'git *'
-zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
+zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 4 )) )'
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
