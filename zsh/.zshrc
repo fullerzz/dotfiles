@@ -38,7 +38,6 @@ eval "$(pyenv init -)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-
 # zoxide
 eval "$(zoxide init zsh)"
 
@@ -71,5 +70,5 @@ eval "$(starship init zsh)"
 # neovim
 export PATH=/opt/nvim-linux64/bin:$PATH
 
-# nerdfetch
-nerdfetch
+# fastfetch
+fastfetch
