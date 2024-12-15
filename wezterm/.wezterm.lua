@@ -33,7 +33,7 @@ local function segments_for_right_status(window)
   return {
     window:active_workspace(),
     wezterm.strftime('%a %b %-d %H:%M'),
-    wezterm.hostname(),
+    wezterm.hostname() .. ' ' .. wezterm.nerdfonts.cod_terminal_linux,
   }
 end
   
@@ -70,6 +70,8 @@ wezterm.on('update-status', function(window, _)
     #segments -- only gives us as many colours as we have segments.
   )
 
+  local segment_text_colors = {'#F5A97F', '#A6DA95', '#B7BDF8' }
+
   -- We'll build up the elements to send to wezterm.format in this table.
   local elements = {}
 
@@ -82,7 +84,7 @@ wezterm.on('update-status', function(window, _)
     table.insert(elements, { Foreground = { Color = gradient[i] } })
     table.insert(elements, { Text = SOLID_LEFT_ARROW })
 
-    table.insert(elements, { Foreground = { Color = fg } })
+    table.insert(elements, { Foreground = { Color = segment_text_colors[i] } })
     table.insert(elements, { Background = { Color = gradient[i] } })
     table.insert(elements, { Text = ' ' .. seg .. ' ' })
   end
