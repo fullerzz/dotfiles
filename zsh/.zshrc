@@ -4,6 +4,8 @@ export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+fpath+=~/.zfunc
+
 # zsh-autocomplete
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
@@ -23,6 +25,7 @@ export PATH=/usr/local/go/bin:$GOPATH/bin:/home/zach/.local/bin:$PATH
 # PATH fix from SO https://stackoverflow.com/questions/39311147/cannot-run-npm-commands
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
 alias python=python3
+alias fd=fdfind
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -67,6 +70,7 @@ eval "$(starship init zsh)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
 # neovim
 export PATH=/opt/nvim-linux64/bin:$PATH
