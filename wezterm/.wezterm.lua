@@ -176,6 +176,7 @@ end
 
 -- Convert arbitrary strings to a unique hex color value
 -- Based on: https://stackoverflow.com/a/3426956/3219667
+-- TODO: Reimplement this function to return colors from the catppuccin palette: https://catppuccin.com/palette
 local function string_to_color(str)
   -- Convert the string to a unique integer
   local hash = 0
@@ -225,7 +226,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   end
   if has_unseen_output(tab) then
       return {
-          { Foreground = { Color = "#EBD168" } },
+          { Foreground = { Color = "#C6A0F6" } },
           { Text = title },
       }
   end
