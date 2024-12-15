@@ -1,0 +1,13 @@
+upgrade-uv:
+  uv self update
+
+upgrade-uv-tools: upgrade-uv
+  uv tool upgrade --all
+
+upgrade-rust:
+  rustup update
+
+upgrade: upgrade-uv-tools
+  echo "Upgraded installed software"
+
+
