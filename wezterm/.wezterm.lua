@@ -48,7 +48,13 @@ local segment_icons = {
   ["rust"] = wezterm.nerdfonts.linux_ferris,
   ["dotfiles"] = wezterm.nerdfonts.custom_folder_config,
   ["gift"] = wezterm.nerdfonts.oct_gift,
-  ["default"] = wezterm.nerdfonts.dev_terminal,
+  ["home"] = wezterm.nerdfonts.fa_home,
+  ["download"] = wezterm.nerdfonts.md_folder_download,
+  ["document"] = wezterm.nerdfonts.md_file_document_multiple_outline,
+  ["video"] = wezterm.nerdfonts.md_video_vintage,
+  ["photo"] = wezterm.nerdfonts.fa_picture_o,
+  ["ghost"] = wezterm.nerdfonts.pom_away,
+  ["default"] = wezterm.nerdfonts.dev_termicnal,
 }
 
 local function icon_segment(pane_title)
@@ -63,6 +69,16 @@ local function icon_segment(pane_title)
     return segment_icons["python"] .. ' '
   elseif pane_title:find("Code") then
     return segment_icons["code"] .. ' '
+  elseif pane_title:find("Videos") then
+    return segment_icons["video"] .. ' '
+  elseif pane_title:find("Downloads") then
+    return segment_icons["download"] .. ' '
+  elseif pane_title:find("Documents") then
+    return segment_icons["document"] .. ' '
+  elseif pane_title:find("Pictures") then
+    return segment_icons["photo"] .. ' '
+  elseif pane_title:find("~") then
+    return segment_icons["home"] .. '  '
   end
   return segment_icons["default"] .. ' '
 end
@@ -149,7 +165,7 @@ local process_icons = {
   ["docker"] = wezterm.nerdfonts.linux_docker,
   ["docker-compose"] = wezterm.nerdfonts.linux_docker,
   ["gh"] = wezterm.nerdfonts.dev_github_badge,
-  ["git"] = wezterm.nerdfonts.fa_git,
+  ["git"] = wezterm.nerdfonts.dev_git,
   ["go"] = wezterm.nerdfonts.seti_go,
   ["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
   ["kubectl"] = wezterm.nerdfonts.linux_docker,
@@ -168,6 +184,13 @@ local process_icons = {
   ["vim"] = wezterm.nerdfonts.dev_vim,
   ["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
   ["zsh"] = wezterm.nerdfonts.dev_terminal,
+  ["zoxide"] = wezterm.nerdfonts.md_kangaroo,
+  ["eza"] = wezterm.nerdfonts.dev_gnu,
+  ["clear"] = wezterm.nerdfonts.pom_away,
+  ["python"] = wezterm.nerdfonts.dev_python,
+  ["python3.12"] = wezterm.nerdfonts.md_snake,
+  ["python3.13"] = wezterm.nerdfonts.md_snake,
+  ["uv"] = wezterm.nerdfonts.md_snake
 }
 
 -- Return the Tab's current working directory
