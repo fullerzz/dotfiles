@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 -- config.font = wezterm.font 'Hack Nerd Font Mono'
-config.font = wezterm.font 'FiraCode Nerd Font Mono'
+config.font = wezterm.font 'FiraCode Nerd Font'
 -- config.font = wezterm.font("0xProto Nerd Font Mono")
 config.font_size = 13.0
 -- For example, changing the color scheme:
@@ -27,28 +27,53 @@ config.set_environment_variables = {
   PATH = '/home/zach/.bin' .. os.getenv('PATH')
 }
 
+config.window_frame = {
+
+  -- The size of the font in the tab bar.
+  -- Default to 10.0 on Windows but 12.0 on other systems
+  font_size = 12.5,
+}
+
+config.colors = {
+  tab_bar = {
+    -- The color of the inactive tab bar edge/divider
+    inactive_tab_edge = '#575757',
+  },
+}
+
 local segment_icons = {
+  ["code"] = wezterm.nerdfonts.dev_code,
   ["python"] = wezterm.nerdfonts.dev_python,
   ["go"] = wezterm.nerdfonts.seti_go,
   ["rust"] = wezterm.nerdfonts.linux_ferris,
+  ["dotfiles"] = wezterm.nerdfonts.custom_folder_config,
+  ["gift"] = wezterm.nerdfonts.oct_gift,
   ["default"] = wezterm.nerdfonts.dev_terminal,
 }
 
-local function icon_segment(window)
+local function icon_segment(pane_title)
   -- TODO: Check for hardcoded list of known project dirs
-  return segment_icons[window:get_title()] or segment_icons["default"]
+  if pane_title:find("dotfiles") then
+    return segment_icons["dotfiles"] .. ' '
+  elseif pane_title:find("gurlon") then
+    return segment_icons["python"] .. ' '
+  elseif pane_title:find("Rust") then
+    return segment_icons["rust"] .. ' '
+  elseif pane_title:find("Python") then
+    return segment_icons["python"] .. ' '
+  elseif pane_title:find("Code") then
+    return segment_icons["code"] .. ' '
+  end
+  return segment_icons["default"] .. ' '
 end
 
 -- https://alexplescan.com/posts/2024/08/10/wezterm/
 -- Upper-right powerline style status bar
 local function segments_for_right_status(window)
   return {
-    -- icon_segment(window),
-    -- window:window_id(),
-    -- window:active_tab():tab_id(), -- muxtab.tab_id()
+    icon_segment(window:active_tab():window():active_pane():get_title()),
     window:active_tab():window():active_pane():get_title(), -- updates with each tab switch
-    window:active_tab():window():get_title(),
-    window:active_workspace(),
+    -- window:active_workspace(),
     wezterm.strftime('%a %b %-d %H:%M'),
     wezterm.hostname() .. ' ' .. wezterm.nerdfonts.cod_terminal_linux,
   }
@@ -87,7 +112,13 @@ wezterm.on('update-status', function(window, _)
     #segments -- only gives us as many colours as we have segments.
   )
 
-  local segment_text_colors = {'#A6DA95', '#F5A97F', '#A6DA95', '#B7BDF8', '#B7BDF8' }
+  local segment_text_colors = {
+    '#C6A0F6', -- mauve
+    '#F5A97F', -- peach
+    '#A6DA95', -- green
+    '#B7BDF8', -- lavender
+    '#8BD5CA' -- teal
+  }
 
   -- We'll build up the elements to send to wezterm.format in this table.
   local elements = {}
