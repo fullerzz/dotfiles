@@ -27,10 +27,26 @@ config.set_environment_variables = {
   PATH = '/home/zach/.bin' .. os.getenv('PATH')
 }
 
+local segment_icons = {
+  ["python"] = wezterm.nerdfonts.dev_python,
+  ["go"] = wezterm.nerdfonts.seti_go,
+  ["rust"] = wezterm.nerdfonts.linux_ferris,
+  ["default"] = wezterm.nerdfonts.dev_terminal,
+}
+
+local function icon_segment(window)
+  -- TODO: Check for hardcoded list of known project dirs
+  return segment_icons[window:get_title()] or segment_icons["default"]
+end
+
 -- https://alexplescan.com/posts/2024/08/10/wezterm/
 -- Upper-right powerline style status bar
 local function segments_for_right_status(window)
   return {
+    -- icon_segment(window),
+    -- window:window_id(),
+    -- window:active_tab():tab_id(), -- muxtab.tab_id()
+    window:active_tab():window():get_title(),
     window:active_workspace(),
     wezterm.strftime('%a %b %-d %H:%M'),
     wezterm.hostname() .. ' ' .. wezterm.nerdfonts.cod_terminal_linux,
@@ -70,7 +86,7 @@ wezterm.on('update-status', function(window, _)
     #segments -- only gives us as many colours as we have segments.
   )
 
-  local segment_text_colors = {'#F5A97F', '#A6DA95', '#B7BDF8' }
+  local segment_text_colors = {'#F5A97F', '#A6DA95', '#B7BDF8', '#B7BDF8' }
 
   -- We'll build up the elements to send to wezterm.format in this table.
   local elements = {}
