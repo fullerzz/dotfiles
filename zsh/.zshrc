@@ -15,7 +15,7 @@ zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 4 )) )'
 plugins=(git zsh-autosuggestions)
 
 bindkey '^ ' autosuggest-accept
-
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -64,6 +64,10 @@ export TF_CMD=tofu
 export AWS_DEFAULT_REGION="us-west-1"
 
 # starship
+function set_win_title(){
+    echo -ne "\033]0; $(basename "$PWD") \007"
+}
+precmd_functions+=(set_win_title)
 eval "$(starship init zsh)"
 
 # fzf
