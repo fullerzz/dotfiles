@@ -46,6 +46,7 @@ local function segments_for_right_status(window)
     -- icon_segment(window),
     -- window:window_id(),
     -- window:active_tab():tab_id(), -- muxtab.tab_id()
+    window:active_tab():window():active_pane():get_title(), -- updates with each tab switch
     window:active_tab():window():get_title(),
     window:active_workspace(),
     wezterm.strftime('%a %b %-d %H:%M'),
@@ -86,7 +87,7 @@ wezterm.on('update-status', function(window, _)
     #segments -- only gives us as many colours as we have segments.
   )
 
-  local segment_text_colors = {'#F5A97F', '#A6DA95', '#B7BDF8', '#B7BDF8' }
+  local segment_text_colors = {'#A6DA95', '#F5A97F', '#A6DA95', '#B7BDF8', '#B7BDF8' }
 
   -- We'll build up the elements to send to wezterm.format in this table.
   local elements = {}
