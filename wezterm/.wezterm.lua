@@ -8,7 +8,15 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 -- config.font = wezterm.font 'Hack Nerd Font Mono'
-config.font = wezterm.font 'FiraCode Nerd Font'
+config.font = wezterm.font_with_fallback {
+  'Iosevka Term SS05',
+  'Iosevka Term',
+  'Iosevka SS05',
+  'Iosevka',
+  'FiraCode Nerd Font',
+  '0xProto Nerd Font Mono',
+  'JetBrains Mono'
+}
 -- config.font = wezterm.font("0xProto Nerd Font Mono")
 config.font_size = 13.0
 -- For example, changing the color scheme:
