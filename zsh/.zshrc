@@ -12,7 +12,7 @@ zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 4 )) )'
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-autosuggestions direnv)
+plugins=(git zsh-autosuggestions)
 
 bindkey '^ ' autosuggest-accept
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -97,6 +97,9 @@ alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=al
 alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # fastfetch
 fastfetch
