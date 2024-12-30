@@ -1,5 +1,7 @@
 {
     "conventionalCommits.scopes": [
-        "zsh"
+        "zsh",
+        "nvim",
+        "settings.json"
     ]
 }
