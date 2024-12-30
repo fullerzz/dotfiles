@@ -12,7 +12,7 @@ zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 4 )) )'
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-autosuggestions)
+plugins=(git git-extras zsh-autosuggestions aws direnv docker docker-compose fzf golang rust sigstore ssh opentofu)
 
 bindkey '^ ' autosuggest-accept
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
