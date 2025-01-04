@@ -98,6 +98,8 @@ alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
 
+alias borg='borg --progress -v'
+
 # direnv
 eval "$(direnv hook zsh)"
 
