@@ -1,0 +1,19 @@
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# python
+__pycache__/
+*.egg-info
+*.py[oc]
+.venv
+venv
+
+# mypy
+.dmypy.json
+
+# direnv
+.direnv
+.envrc
+.env
