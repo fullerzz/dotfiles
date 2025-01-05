@@ -10,3 +10,14 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 
 [direnv]
 disabled = false
+format = '[$symbol$loaded $allowed]($style) '
+symbol = ' '
+allowed_msg = ''
+not_allowed_msg = ''
+denied_msg = ''
+loaded_msg = 'loaded'
+unloaded_msg = 'unloaded'
+style = 'bold green'
+
+[memory_usage]
+disabled = false
