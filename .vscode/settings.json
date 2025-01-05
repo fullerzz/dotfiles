@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "zsh",
         "nvim",
-        "settings.json"
+        "settings.json",
+        "starshipo"
     ]
 }
