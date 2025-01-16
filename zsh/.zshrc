@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$PATH
 
+export XDG_CONFIG_HOME=~/.config
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -8,9 +10,13 @@ fpath+=~/.zfunc
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git git-extras git-lfs direnv)
 
 source $ZSH/oh-my-zsh.sh
+
+# zsh-autosuggestions
+bindkey '^ ' autosuggest-accept
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-autocomplete
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -18,10 +24,6 @@ source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 zstyle ':autocomplete:*' ignored-input 'git *'
 zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
 
-# User configuration
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=/usr/local/go/bin:$GOPATH/bin:/home/zach/.local/bin:$PATH
 # PATH fix from SO https://stackoverflow.com/questions/39311147/cannot-run-npm-commands
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
 alias python=python3
@@ -75,6 +77,9 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 # neovim
 export PATH=/opt/nvim-linux64/bin:$PATH
 
+# direnv
+eval "$(direnv hook zsh)"
+
 alias cd="z"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons'
@@ -88,5 +93,5 @@ alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
 
-# nerdfetch
-nerdfetch
+# fastfetch
+fastfetch -c examples/10.jsonc
