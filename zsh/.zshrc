@@ -10,8 +10,8 @@ fpath+=~/.zfunc
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git git-extras git-lfs direnv)
-
+plugins=(git git-extras git-lfs direnv nvm)
+zstyle ':omz:plugins:nvm' lazy yes
 source $ZSH/oh-my-zsh.sh
 
 # zsh-autosuggestions
@@ -43,12 +43,8 @@ eval "$(pyenv init -)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-
 # zoxide
 eval "$(zoxide init zsh)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # pnpm
 export PNPM_HOME="/home/zach/.local/share/pnpm"
@@ -95,3 +91,4 @@ alias l.="eza -a | grep -E '^\.'"
 
 # fastfetch
 fastfetch -c examples/10.jsonc
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
