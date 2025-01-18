@@ -10,7 +10,7 @@ fpath+=~/.zfunc
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git git-extras git-lfs direnv nvm)
+plugins=(git git-extras git-lfs direnv nvm fzf)
 zstyle ':omz:plugins:nvm' lazy yes
 source $ZSH/oh-my-zsh.sh
 
@@ -23,6 +23,9 @@ source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
 zstyle ':autocomplete:*' ignored-input 'git *'
 zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
 # PATH fix from SO https://stackoverflow.com/questions/39311147/cannot-run-npm-commands
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
@@ -43,16 +46,21 @@ eval "$(pyenv init -)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# zoxide
-eval "$(zoxide init zsh)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # pnpm
-export PNPM_HOME="/home/zach/.local/share/pnpm"
+export PNPM_HOME="/Users/zachfuller/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # add ~/bin to PATH
 export PATH="~/bin:$PATH"
@@ -67,7 +75,7 @@ export AWS_DEFAULT_REGION="us-west-1"
 eval "$(starship init zsh)"
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
 # neovim
@@ -91,4 +99,3 @@ alias l.="eza -a | grep -E '^\.'"
 
 # fastfetch
 fastfetch -c examples/10.jsonc
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
