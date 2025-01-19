@@ -17,5 +17,5 @@ window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
 window-theme = ghostty
-
+window-vsync = false
 desktop-notifications = true
