@@ -57,7 +57,7 @@ esac
 # pnpm end
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # zoxide
 eval "$(zoxide init zsh)"
@@ -84,7 +84,11 @@ export PATH=/opt/nvim-linux64/bin:$PATH
 # direnv
 eval "$(direnv hook zsh)"
 
+#iterm2 shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 alias cd="z"
+alias clear="clear -x"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons'
 alias ll='eza -la --icons --octal-permissions --group-directories-first'
