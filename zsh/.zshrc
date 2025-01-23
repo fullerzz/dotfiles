@@ -8,16 +8,17 @@ export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
 export ZELLIJ_AUTO_ATTACH=true
 eval "$(zellij setup --generate-auto-start zsh)"
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# nvm
+zstyle ':omz:plugins:nvm' lazy yes
+# antidote
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
 
 fpath+=~/.zfunc
 
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git git-extras git-lfs direnv nvm fzf)
-zstyle ':omz:plugins:nvm' lazy yes
-source $ZSH/oh-my-zsh.sh
+export ZSH=$(antidote path ohmyzsh/ohmyzsh)
 
 # zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
@@ -50,8 +51,6 @@ eval "$(pyenv init -)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # pnpm
 export PNPM_HOME="/Users/zachfuller/Library/pnpm"
