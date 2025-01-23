@@ -279,7 +279,7 @@ themes {
 // Choose the theme that is specified in the themes section.
 // Default: dracula
 //
-theme "dracula"
+theme "catppuccin-mocha"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -306,7 +306,7 @@ theme "dracula"
 // Valid values: positive integers
 // Default value: 10000
 //
-// scroll_buffer_size 10000
+scroll_buffer_size 20000
 
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
