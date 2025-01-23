@@ -2,7 +2,11 @@
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 export XDG_CONFIG_HOME=$HOME/.config
+
+# zellij
 export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
+export ZELLIJ_AUTO_ATTACH=true
+eval "$(zellij setup --generate-auto-start zsh)"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
