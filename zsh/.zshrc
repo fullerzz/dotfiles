@@ -3,13 +3,13 @@ export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-# zellij
-export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
-export ZELLIJ_AUTO_ATTACH=true
-eval "$(zellij setup --generate-auto-start zsh)"
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# homebrew
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
 
 fpath+=~/.zfunc
 
@@ -41,18 +41,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-#autoload -U +X bashcompinit && bashcompinit
-#complete -o nospace -C /usr/bin/terraform terraform
-
-# bun completions
-[ -s "/home/zach/.bun/_bun" ] && source "/home/zach/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # pnpm
 export PNPM_HOME="/Users/zachfuller/Library/pnpm"
 case ":$PATH:" in
@@ -70,9 +58,6 @@ eval "$(zoxide init zsh)"
 # add ~/bin to PATH
 export PATH="~/bin:$PATH"
 
-# alias for tofu tflocal
-export TF_CMD=tofu
-
 # AWS
 export AWS_DEFAULT_REGION="us-west-1"
 
@@ -89,8 +74,11 @@ export PATH=/opt/nvim-linux64/bin:$PATH
 # direnv
 eval "$(direnv hook zsh)"
 
+# zellij
+export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
+
 #iterm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias cd="z"
 alias clear="clear -x"
