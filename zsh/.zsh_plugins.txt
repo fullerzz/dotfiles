@@ -14,5 +14,5 @@ ohmyzsh/ohmyzsh path:plugins/nvm
 
 # popular fish-like plugins
 mattmc3/zfunctions
-zsh-users/zsh-autosuggestions
-marlonrichert/zsh-autocomplete
+#zsh-users/zsh-autosuggestions
+#marlonrichert/zsh-autocomplete
