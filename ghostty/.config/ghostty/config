@@ -1,5 +1,5 @@
-font-family = "FiraCode Nerd Font"
-font-size = 15
+font-family = "Monaspace Neon"
+font-size = 18.5
 bold-is-bright = true
 theme = "catppuccin-mocha"
 mouse-hide-while-typing = true
@@ -17,5 +17,6 @@ window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
 window-theme = ghostty
-window-vsync = false
+window-vsync = true
 desktop-notifications = true
+macos-option-as-alt = true
