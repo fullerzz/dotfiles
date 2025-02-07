@@ -78,6 +78,9 @@ eval "$(direnv hook zsh)"
 # zellij
 export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
 
+# java
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+
 #iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
