@@ -8,8 +8,7 @@ fpath+=~/.zfunc
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-
+plugins=(git git-extras git-lfs zsh-syntax-highlighting zsh-autosuggestions opentofu rust docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # zsh-autocomplete
@@ -33,14 +32,13 @@ eval "$(pyenv init -)"
 
 #autoload -U +X bashcompinit && bashcompinit
 #complete -o nospace -C /usr/bin/terraform terraform
-
+bindkey '^ ' autosuggest-accept
 # bun completions
 [ -s "/home/zach/.bun/_bun" ] && source "/home/zach/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
 
 # zoxide
 eval "$(zoxide init zsh)"
