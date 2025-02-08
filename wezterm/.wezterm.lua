@@ -8,12 +8,13 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 -- config.font = wezterm.font 'Hack Nerd Font Mono'
 config.font = wezterm.font_with_fallback({
+	"Monaspace Neon",
 	"FiraCode Nerd Font",
 	"0xProto Nerd Font Mono",
 	"JetBrains Mono",
 })
 -- config.font = wezterm.font("0xProto Nerd Font Mono")
-config.font_size = 16.5
+config.font_size = 17.0
 -- For example, changing the color scheme:
 config.color_scheme = "catppuccin-mocha"
 config.window_background_opacity = 0.98

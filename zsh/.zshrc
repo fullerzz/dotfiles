@@ -3,21 +3,22 @@ export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 # homebrew
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+# nvm
+zstyle ':omz:plugins:nvm' lazy yes
+# antidote
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
+
 fpath+=~/.zfunc
 
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(git git-extras git-lfs direnv nvm fzf)
-zstyle ':omz:plugins:nvm' lazy yes
-source $ZSH/oh-my-zsh.sh
+export ZSH=$(antidote path ohmyzsh/ohmyzsh)
 
 # zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
@@ -76,6 +77,9 @@ eval "$(direnv hook zsh)"
 
 # zellij
 export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
+
+# java
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 #iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
