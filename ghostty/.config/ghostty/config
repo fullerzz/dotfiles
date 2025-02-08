@@ -21,3 +21,11 @@ window-save-state = always
 window-vsync = true
 desktop-notifications = true
 macos-option-as-alt = true
+
+quick-terminal-position = bottom
+quick-terminal-space-behavior = remain
+quick-terminal-autohide = true
+
+# keybinds
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:alt+w=write_screen_file:paste
