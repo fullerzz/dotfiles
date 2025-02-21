@@ -66,8 +66,39 @@ export AWS_DEFAULT_REGION="us-west-1"
 eval "$(starship init zsh)"
 
 # fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS="--tmux 90% --layout=reverse --inline-info --border"
+export FZF_CTRL_T_OPTS="
+  --style full
+  --walker-skip .git,node_modules,target,.venv
+  --preview 'bat -n --color=always {}'
+  --border --padding 1,1
+  --border-label ' fzf ' --input-label ' Input ' --header-label ' File Type ' \
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  --bind 'result:transform-list-label:
+      if [[ -z $FZF_QUERY ]]; then
+        echo \" $FZF_MATCH_COUNT items \"
+      else
+        echo \" $FZF_MATCH_COUNT matches for [$FZF_QUERY] \"
+      fi
+      ' \
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}' \
+  --bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"' \
+  "
+export FZF_ALT_C_OPTS="--preview 'eza --tree --level=2 --color=always --group-directories-first --icons {} | head -200'"
+export FZF_COMPLETION_OPTS='--border --info=inline'
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
 source <(fzf --zsh)
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 
 # neovim
 export PATH=/opt/nvim-linux64/bin:$PATH
