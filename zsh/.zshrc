@@ -36,7 +36,6 @@ zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 # PATH fix from SO https://stackoverflow.com/questions/39311147/cannot-run-npm-commands
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
 alias python=python3
-alias fd=fdfind
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -67,7 +66,13 @@ eval "$(starship init zsh)"
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_DEFAULT_OPTS="--tmux 90% --layout=reverse --inline-info --border"
+export FZF_DEFAULT_OPTS=" \
+--tmux 90% --layout=reverse --inline-info --border \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+--color=selected-bg:#494d64 \
+--multi"
 export FZF_CTRL_T_OPTS="
   --style full
   --walker-skip .git,node_modules,target,.venv
