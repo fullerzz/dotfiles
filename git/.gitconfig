@@ -5,30 +5,47 @@
 [init]
 	defaultBranch = main
 [core]
-	editor = vim
+	editor = nvim
 	excludesFile = ~/.gitignore
 [fetch]
 	prune = true
 	writeCommitGraph = true
+	all = true
 [push]
 	autoSetupRemote = true
 [commit]
 	verbose = true
 	gpgsign = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
 [merge]
 	conflictStyle = zdiff3
 [rebase]
 	autosquash = true
+	updateRefs = true
 [rerere]
 	enabled = true
 	autoupdate = true
 [diff]
 	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
+	colorMoved = dimmed-zebra
+	external = difft # Use difftastic for diffs - to use default run 'git diff --no-ext-diff'
+[alias]
+	# Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+	dlog = -c diff.external=difft log --ext-diff
+	dshow = -c diff.external=difft show --ext-diff
+	ddiff = -c diff.external=difft diff
 [pull]
 	rebase = true
 [color]
 	ui = true
 [help]
-	autocorrect = 10
+	autocorrect = prompt
 [gpg]
 	format = ssh
