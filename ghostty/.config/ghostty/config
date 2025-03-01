@@ -19,10 +19,9 @@ shell-integration = zsh
 shell-integration-features = true
 
 window-padding-x = 4
-window-padding-y = 4
+window-padding-y = 4,10
 window-padding-balance = true
 window-theme = ghostty
-window-save-state = always
 window-vsync = true
 desktop-notifications = true
 macos-option-as-alt = true
