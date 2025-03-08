@@ -6,7 +6,7 @@
 	defaultBranch = main
 [core]
 	editor = nvim
-	excludesFile = ~/.gitignore
+	excludesFile = ~/.global_gitignore
 [fetch]
 	prune = true
 	writeCommitGraph = true
