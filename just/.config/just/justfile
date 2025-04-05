@@ -1,0 +1,12 @@
+_default:
+    @just -g --list
+
+# update homebrew and then upgrade packages
+brewupdg:
+    brew update
+    brew upgrade
+
+# update uv tools
+uvx-up:
+    uv tool upgrade --all
+
