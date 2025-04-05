@@ -10,3 +10,13 @@ brewupdg:
 uvx-up:
     uv tool upgrade --all
 
+
+# create bare git repo in the current directory and setup remote tracking
+git-clone-bare GIT_URL:
+    @echo "{{ BOLD + CYAN }}Cloning {{ GIT_URL }}{{ NORMAL }}"
+    git clone --bare {{GIT_URL}} .bare
+    echo "gitdir: ./.bare" > .git
+    git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    git fetch
+    git for-each-ref --format='%(refname:short)' refs/heads | xargs -n1 -I{} git branch --set-upstream-to=origin/{}
+    @echo "\n{{ BOLD + GREEN }}Bare git repo set up successfully!{{ NORMAL }}" 
