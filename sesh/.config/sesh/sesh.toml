@@ -2,3 +2,7 @@ blacklist = ["scratch"]
 
 [default_session]
 preview_command = "eza --all --git --icons --group-directories-first --color=always {}"
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
