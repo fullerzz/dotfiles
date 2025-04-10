@@ -6,10 +6,16 @@ brewupdg:
     brew update
     brew upgrade
 
-# update uv tools
-uvx-up:
-    uv tool upgrade --all
-
+# prune docker images, containers, volumes, and networks
+docker-prune:
+    @echo "🧼{{ BOLD + BLUE }} Pruning docker {{ INVERT }}images{{ NORMAL }}"
+    docker image prune
+    @echo "🧼{{ BOLD + BLUE }} Pruning docker {{ INVERT }}containers{{ NORMAL }}"
+    docker container prune
+    @echo "🧼{{ BOLD + BLUE }} Pruning docker {{ INVERT }}networks{{ NORMAL }}"
+    docker network prune
+    @echo "\n{{ BOLD + GREEN }}Docker images, containers, networks pruned successfully!{{ NORMAL }}"
+    @echo "🐳{{ CYAN }} More info: https://docs.docker.com/engine/manage-resources/pruning/ {{ NORMAL }}"
 
 # create bare git repo in the current directory and setup remote tracking
 git-clone-bare GIT_URL:
@@ -18,3 +24,7 @@ git-clone-bare GIT_URL:
     echo "gitdir: ./.bare" > .git
     git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
     @echo "\n{{ BOLD + GREEN }}Bare git repo set up successfully!{{ NORMAL }}" 
+
+# update uv tools
+uvx-up:
+    uv tool upgrade --all
