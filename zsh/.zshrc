@@ -28,6 +28,8 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
 zstyle ':autocomplete:*' ignored-input 'git *'
+zstyle ':autocomplete:*' delay 0.2  # seconds (float)
+zstyle ':autocomplete:*' min-input 3
 zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
@@ -123,15 +125,15 @@ export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 alias cd="z"
 alias clear="clear -x"
 # eza aliases
-alias ls='eza --color=always --group-directories-first --icons'
-alias ll='eza -la --icons --octal-permissions --group-directories-first'
-alias l='eza -bGF --header --git --color=always --group-directories-first --icons'
-alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons' 
+alias ls='eza --color=always --group-directories-first --icons=always $@'
+alias ll='eza -la --icons=always --octal-permissions --group-directories-first'
+alias l='eza -bGF --header --git --color=always --group-directories-first --icons=always'
+alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons=always' 
 alias la='eza --long --all --group --group-directories-first'
-alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons'
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons=always'
 
-alias lS='eza -1 --color=always --group-directories-first --icons'
-alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
+alias lS='eza -1 --color=always --group-directories-first --icons=always'
+alias lt='eza --tree --level=2 --color=always --group-directories-first --icons=always'
 alias l.="eza -a | grep -E '^\.'"
 
 # fastfetch
