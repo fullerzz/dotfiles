@@ -1,18 +1,13 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:/usr/local/go/bin:$PATH
 
 export XDG_CONFIG_HOME=$HOME/.config
-
-# homebrew
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
 
 # nvm
 zstyle ':omz:plugins:nvm' lazy yes
 # antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+source $HOME/.antidote/antidote.zsh
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 antidote load
 
@@ -22,10 +17,10 @@ export ZSH=$(antidote path ohmyzsh/ohmyzsh)
 
 # zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-autocomplete
-source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
 zstyle ':autocomplete:*' ignored-input 'git *'
 zstyle ':autocomplete:*' delay 0.2  # seconds (float)
@@ -39,9 +34,9 @@ zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
 alias python=python3
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
 # pnpm
 export PNPM_HOME="/Users/zachfuller/Library/pnpm"
@@ -113,11 +108,14 @@ export PATH=/opt/nvim-linux64/bin:$PATH
 # direnv
 eval "$(direnv hook zsh)"
 
+# docker
+export COMPOSE_BAKE=true
+
 # zellij
-export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
+#export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
 
 # java
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+#export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 #iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
