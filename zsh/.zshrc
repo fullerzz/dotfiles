@@ -111,6 +111,9 @@ eval "$(direnv hook zsh)"
 # docker
 export COMPOSE_BAKE=true
 
+# borgboi
+source $HOME/.borgboi-env
+
 # zellij
 #export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
 
