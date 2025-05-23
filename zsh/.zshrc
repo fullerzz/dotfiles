@@ -108,6 +108,8 @@ eval "$(direnv hook zsh)"
 
 # docker
 export COMPOSE_BAKE=true
+export UID=$(id -u)
+export GID=$(id -g)
 
 # borgboi
 #source $HOME/.borgboi-env
