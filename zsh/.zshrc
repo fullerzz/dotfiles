@@ -54,6 +54,7 @@ eval "$(zoxide init zsh)"
 
 # add ~/bin to PATH
 export PATH="~/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 # AWS
 export AWS_DEFAULT_REGION="us-west-1"
@@ -100,10 +101,7 @@ _fzf_comprun() {
     *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
   esac
 }
-source <(fzf --zsh)
-
-# neovim
-export PATH=/opt/nvim-linux64/bin:$PATH
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -112,16 +110,10 @@ eval "$(direnv hook zsh)"
 export COMPOSE_BAKE=true
 
 # borgboi
-source $HOME/.borgboi-env
+#source $HOME/.borgboi-env
 
 # zellij
 #export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
-
-# java
-#export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
-
-#iterm2 shell integration
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 alias cd="z"
 alias clear="clear -x"
@@ -139,3 +131,9 @@ alias l.="eza -a | grep -E '^\.'"
 
 # fastfetch
 fastfetch -c examples/10.jsonc
+
+# nvm
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
