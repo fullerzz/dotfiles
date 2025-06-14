@@ -111,8 +111,12 @@ export COMPOSE_BAKE=true
 export UID=$(id -u)
 export GID=$(id -g)
 
+# atuin
+export ATUIN_SYNC_ADDRESS="http://0.0.0.0:8888"
+eval $(atuin init zsh)
+
 # borgboi
-#source $HOME/.borgboi-env
+source $HOME/.borgboi-env
 
 # zellij
 #export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
@@ -139,3 +143,7 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
