@@ -10,6 +10,7 @@ fi
 
 # nvm
 zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx
 # antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
@@ -58,7 +59,7 @@ esac
 eval "$(zoxide init zsh)"
 
 # add ~/bin to PATH
-export PATH="~/bin:$PATH"
+export PATH="~/bin:~/Go/bin:$PATH"
 
 # AWS
 export AWS_DEFAULT_REGION="us-west-1"
@@ -118,6 +119,13 @@ export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
 
 # java
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+
+# borgboi completion
+eval "$(_BB_COMPLETE=zsh_source bb)"
+eval "$(_BORGBOI_COMPLETE=zsh_source borgboi)"
+
+# atuin
+eval "$(atuin init zsh)"
 
 #iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
