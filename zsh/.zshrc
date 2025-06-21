@@ -22,6 +22,7 @@ fpath+=~/.zfunc
 export ZSH=$(antidote path ohmyzsh/ohmyzsh)
 
 # zsh-autosuggestions
+export ZSH_AUTOSUGGEST_STRATEGY=(atuin history completion)
 bindkey '^ ' autosuggest-accept
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -126,6 +127,9 @@ eval "$(_BORGBOI_COMPLETE=zsh_source borgboi)"
 
 # atuin
 eval "$(atuin init zsh)"
+
+# docker
+export COMPOSE_BAKE=true
 
 #iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
