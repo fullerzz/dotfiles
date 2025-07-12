@@ -144,3 +144,6 @@ export ATUIN_SYNC_ADDRESS="http://0.0.0.0:8888"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
+
+eval "$(/usr/bin/mise activate zsh)"

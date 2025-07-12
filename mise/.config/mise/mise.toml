@@ -2,7 +2,16 @@
 NODE_ENV = 'production'
 
 [tools]
+bat = "latest"
+duckdb = "latest"
+go = "1.24"
+rust = "latest"
 terraform = '1.10.0'
+usage = "latest"
+zig = "0.14"
 
 [tasks.build]
 run = 'echo "running build tasks"'
+
+[settings]
+idiomatic_version_file_enable_tools = ["python", "node"]
