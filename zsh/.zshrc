@@ -128,6 +128,9 @@ eval "$(_BORGBOI_COMPLETE=zsh_source borgboi)"
 # atuin
 eval "$(atuin init zsh)"
 
+# mise
+eval "$(mise activate zsh)"
+
 # docker
 export COMPOSE_BAKE=true
 
