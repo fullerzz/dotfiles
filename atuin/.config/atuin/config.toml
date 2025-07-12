@@ -96,7 +96,7 @@ sync_frequency = "1m"
 # ctrl_n_shortcuts = false
 
 ## default history list format - can also be specified with the --format arg
-# history_format = "{time}\t{command}\t{duration}"
+history_format = "{host}\t{time}\t{command}\t{duration}"
 
 ## prevent commands matching any of these regexes from being written to history.
 ## Note that these regular expressions are unanchored, i.e. if they don't start
