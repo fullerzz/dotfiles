@@ -6,6 +6,12 @@ brewupdg:
     brew update
     brew upgrade
 
+# stop current container, run pull, and docker compose up -d
+docker-upgrade:
+    docker compose down
+    docker compose pull && docker compose up -d
+    @echo "{{ BOLD + CYAN}}Upgrade complete {{ NORMAL }}"
+ 
 # prune docker images, containers, volumes, and networks
 docker-prune:
     @echo "🧼{{ BOLD + BLUE }} Pruning docker {{ INVERT }}images{{ NORMAL }}"
