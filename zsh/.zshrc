@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.duckdb/cli/latest:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -73,6 +73,9 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 # neovim
 export PATH=/opt/nvim-linux64/bin:$PATH
 
+# atuin
+export ATUIN_SYNC_ADDRESS="http://homelab:8888"
+
 alias cd="z"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons'
@@ -88,3 +91,10 @@ alias l.="eza -a | grep -E '^\.'"
 
 # nerdfetch
 nerdfetch
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+# mise
+eval "$(mise activate zsh)"
