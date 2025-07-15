@@ -5,10 +5,14 @@ NODE_ENV = 'production'
 bat = "latest"
 duckdb = "latest"
 go = "1.24"
+lazyjournal = "latest"
 rust = "latest"
-terraform = '1.10.0'
+slsa-verifier = "latest"
+terraform = "1.12.2"
 usage = "latest"
 zig = "0.14"
+cosign = "latest"
+cargo-binstall = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
