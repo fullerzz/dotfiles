@@ -3,13 +3,17 @@ NODE_ENV = 'production'
 
 [tools]
 go = "1.24"
-rust = "latest"
-terraform = '1.10.0'
 usage = "latest"
 zig = "0.14"
+python = ["3.13", "3.12"]
+slsa-verifier = "latest"
+cosign = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
 
 [settings]
 idiomatic_version_file_enable_tools = ["python", "node"]
+
+gpg_verify = true
+trusted_config_paths = ["~/Code/*"]
