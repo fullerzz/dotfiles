@@ -17,3 +17,6 @@ venv
 .direnv
 .envrc
 .env
+
+mise.local.toml
+
