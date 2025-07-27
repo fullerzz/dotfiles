@@ -3,6 +3,9 @@ export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 export XDG_CONFIG_HOME=$HOME/.config
 
+# load secrets from OSX keychain
+export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w)
+
 # homebrew
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
