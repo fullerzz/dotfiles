@@ -10,7 +10,7 @@ fi
 
 # nvm
 zstyle ':omz:plugins:nvm' lazy yes
-zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx
+zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx ng
 # antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
