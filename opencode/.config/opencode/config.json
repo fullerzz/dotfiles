@@ -23,5 +23,32 @@
         "moonshotai/kimi-k2": {}
       }
     }
+  },
+  "mcp": {
+    "github-mcp": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "enabled": true,
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_MCP_TOKEN}"
+      }
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "bunx",
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "enabled": true
+    }
   }
 }
