@@ -11,9 +11,16 @@
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
-        "qwen2.5-coder:32b": {},
+        "qwen2.5-coder:7b": {},
         "qwen3:30b-a3b": {},
+        "qwen3:4b": {},
         "devstral:24b": {}
+      }
+    },
+    "openrouter": {
+      "models": {
+        "qwen/qwen3-coder": {},
+        "moonshotai/kimi-k2": {}
       }
     }
   }
