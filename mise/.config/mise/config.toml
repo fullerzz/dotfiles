@@ -1,7 +1,17 @@
 [tools]
-node = '22'
+node = "24"
 go = 'latest'
 rust = 'latest'
+usage = "latest"
+zig = "0.14"
+task = "latest"
+tflint = "latest"
+slsa-verifier = "latest"
+cosign = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
+env_file = '.env'
+gpg_verify = true
+
+experimental = true
