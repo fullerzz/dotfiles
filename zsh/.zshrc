@@ -25,6 +25,7 @@ fpath+=~/.zfunc
 export ZSH=$(antidote path ohmyzsh/ohmyzsh)
 
 # zsh-autosuggestions
+export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="pnpm *"
 export ZSH_AUTOSUGGEST_STRATEGY=(atuin history completion)
 bindkey '^ ' autosuggest-accept
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
