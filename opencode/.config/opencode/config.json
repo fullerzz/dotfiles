@@ -12,6 +12,7 @@
       },
       "models": {
         "qwen2.5-coder:7b": {},
+        "qwen3-coder:30b": {},
         "qwen3:30b-a3b": {},
         "qwen3:4b": {},
         "devstral:24b": {}
@@ -43,11 +44,12 @@
     },
     "context7": {
       "type": "local",
-      "command": [
-        "bunx",
-        "-y",
-        "@upstash/context7-mcp"
-      ],
+      "command": ["bunx", "-y", "@upstash/context7-mcp"],
+      "enabled": true
+    },
+    "memory": {
+      "type": "local",
+      "command": ["bunx", "-y", "@modelcontextprotocol/server-memory"],
       "enabled": true
     }
   }
