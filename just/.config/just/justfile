@@ -3,6 +3,7 @@ _default:
 
 # update homebrew and then upgrade packages
 brewupdg:
+    @echo "\n🍺{{ BOLD + CYAN }} Updating Homebrew and upgrading packages...{{ NORMAL }}"
     brew update
     brew upgrade
 
@@ -27,4 +28,12 @@ git-clone-bare GIT_URL:
 
 # update uv tools
 uvx-up:
+    @echo "\n⚡️{{ BOLD + MAGENTA }} Updating uv tools...{{ NORMAL }}"
     uv tool upgrade --all
+
+# run updates for all tools
+send-it:
+    @echo "🗿{{ BOLD + CYAN }} Running updates for all tools...{{ NORMAL }}"
+    @just -g brewupdg
+    @just -g uvx-up
+    @echo "\n✅{{ BOLD + GREEN }} All tools updated successfully!{{ NORMAL }}"
