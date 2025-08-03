@@ -1,0 +1,37 @@
+if on_git_branch; then
+  echo && git status --short --branch &&
+  echo && git fetch --verbose
+fi
+
+layout_uv() {
+    if [[ -d ".venv" ]]; then
+        VIRTUAL_ENV="$(pwd)/.venv"
+    fi
+
+    if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+        log_status "No virtual environment exists. Executing \`uv venv\` to create one."
+        uv venv
+        VIRTUAL_ENV="$(pwd)/.venv"
+    fi
+
+    PATH_add "$VIRTUAL_ENV/bin"
+    export UV_ACTIVE=1  # or VENV_ACTIVE=1
+    export VIRTUAL_ENV
+}
+
+# Usage: layout golang
+#
+# Sets up environment for a Go project using the alternative gb build tool. Also
+# works with the official dep package.In addition to project executables on
+# PATH, this includes an exclusive, project- local GOPATH which enables many
+# tools like gocode and oracle to "just work".
+#
+# http://getgb.io/
+# https://golang.github.io/dep/
+#
+
+layout_golang() {
+  export GOPATH="$PWD/vendor:$PWD"
+  PATH_add "$PWD/vendor/bin"
+  PATH_add bin
+}
