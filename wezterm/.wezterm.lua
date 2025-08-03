@@ -25,7 +25,7 @@ config.window_background_opacity = 0.95
 config.initial_rows = 40
 config.initial_cols = 160
 
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.window_decorations = "RESIZE"
 config.enable_scroll_bar = true
 
@@ -174,7 +174,7 @@ local process_icons = {
 	["docker"] = wezterm.nerdfonts.linux_docker,
 	["docker-compose"] = wezterm.nerdfonts.linux_docker,
 	["gh"] = wezterm.nerdfonts.dev_github_badge,
-	["git"] = wezterm.nerdfonts.dev_git,
+	["git"] = wezterm.nerdfonts.fa_git,
 	["go"] = wezterm.nerdfonts.seti_go,
 	["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
 	["kubectl"] = wezterm.nerdfonts.linux_docker,
@@ -283,6 +283,20 @@ local function string_to_color(str)
 	return "#" .. (string.rep("0", 6 - #c) .. c):upper()
 end
 
+local function string_to_catppuccin(str)
+	local macchiato_palette = {
+		"#F5BDE6", --pink
+		"#C6A0F6", --mauve
+		"#ED8796", --red
+		"#F5A97F", --peach
+		"#A6DA95", --green
+		"#8BD5CA", --teal
+		"#8AADF4", --blue
+		"#EED49F", --yellow
+	}
+	return macchiato_palette[math.random(#macchiato_palette)]
+end
+
 local function select_contrasting_fg_color(hex_color)
 	-- Note: this could use `return color:complement_ryb()` instead if you prefer or other builtins!
 
@@ -308,7 +322,9 @@ assert(select_contrasting_fg_color("#EBD168") == "#000000", "Expected higher con
 ---@diagnostic disable-next-line: unused-local
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local title = get_tab_title(tab)
-	local color = string_to_color(get_cwd(tab))
+	local color = string_to_catppuccin(get_cwd(tab))
+	-- local color = string_to_color(get_cwd(tab))
+
 
 	if tab.is_active then
 		return {
