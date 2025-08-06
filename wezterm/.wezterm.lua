@@ -8,6 +8,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 -- config.font = wezterm.font 'Hack Nerd Font Mono'
 config.font = wezterm.font_with_fallback({
+	"FiraCode Nerd Font",
 	"Monaspace Neon",
 	"FiraCode Nerd Font",
 	"0xProto Nerd Font Mono",
