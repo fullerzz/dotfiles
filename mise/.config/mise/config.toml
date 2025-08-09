@@ -13,7 +13,7 @@ cosign = "latest"
 run = 'echo "running build tasks"'
 
 [settings]
-idiomatic_version_file_enable_tools = ["python", "node"]
+idiomatic_version_file_enable_tools = ["python"]
 
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
