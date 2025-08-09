@@ -21,5 +21,8 @@ loaded_msg = 'loaded'
 unloaded_msg = 'unloaded'
 style = 'bold green'
 
+[aws]
+symbol = '󱍟 '
+
 [memory_usage]
 disabled = false
