@@ -157,3 +157,8 @@ alias l.="eza -a | grep -E '^\.'"
 
 # fastfetch
 fastfetch -c examples/10.jsonc
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/zachfuller/.lmstudio/bin"
+# End of LM Studio CLI section
+
