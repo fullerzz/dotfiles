@@ -17,6 +17,9 @@ clipboard-read = allow
 clipboard-write = allow
 shell-integration = zsh
 shell-integration-features = true
+cursor-color = #74c7ec
+cursor-style-blink = true
+cursor-style = block
 
 window-padding-x = 4
 window-padding-y = 4,10
