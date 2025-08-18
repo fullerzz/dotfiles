@@ -46,7 +46,7 @@
 [color]
 	ui = true
 [help]
-	autocorrect = prompt
+	autocorrect = 1
 [gpg]
 	format = ssh
 [filter "lfs"]
