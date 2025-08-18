@@ -2,10 +2,9 @@
 NODE_ENV = 'production'
 
 [tools]
-go = "1.24"
+go = "1.25"
 usage = "latest"
 zig = "0.14"
-python = ["3.13", "3.12"]
 slsa-verifier = "latest"
 cosign = "latest"
 
@@ -13,7 +12,10 @@ cosign = "latest"
 run = 'echo "running build tasks"'
 
 [settings]
-idiomatic_version_file_enable_tools = ["python"]
+experimental = true
+idiomatic_version_file_enable_tools = ["node"]
+lockfile = true
+python.uv_venv_auto = true
 
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
