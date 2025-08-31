@@ -29,6 +29,18 @@
         "anthropic/claude-opus-4.1": {}
       }
     },
+    "openai": {
+      "models": {
+        "gpt-5": {
+          "options": {
+            "reasoningEffort": "high",
+            "textVerbosity": "low",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"]
+          }
+        }
+      }
+    },
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "LM Studio (local)",
@@ -61,20 +73,12 @@
     },
     "context7": {
       "type": "local",
-      "command": [
-        "bunx",
-        "-y",
-        "@upstash/context7-mcp"
-      ],
+      "command": ["bunx", "-y", "@upstash/context7-mcp"],
       "enabled": true
     },
     "memory": {
       "type": "local",
-      "command": [
-        "bunx",
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
+      "command": ["bunx", "-y", "@modelcontextprotocol/server-memory"],
       "enabled": true
     }
   }
