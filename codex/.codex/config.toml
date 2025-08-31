@@ -1,0 +1,10 @@
+# https://github.com/openai/codex/blob/main/docs/config.md
+
+model = "gpt-5"
+model_verbosity = "low"
+
+[projects."/Users/zachfuller/Code/Python/pauselock"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/Angular/pauselock-ui"]
+trust_level = "trusted"
