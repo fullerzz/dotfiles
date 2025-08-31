@@ -8,3 +8,32 @@ trust_level = "trusted"
 
 [projects."/Users/zachfuller/Code/Node/Angular/pauselock-ui"]
 trust_level = "trusted"
+
+[mcp_servers.memory]
+command = "bunx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+
+[mcp_servers.context7]
+command = "bunx"
+args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.time]
+command = "uvx"
+args = ["mcp-server-time", "--local-timezone=America/Phoenix"]
+
+[mcp_servers.git]
+command = "uvx"
+args = ["mcp-server-git"]
+
+[mcp_servers.github]
+command = "docker"
+args = [
+    "run",
+    "-i",
+    "--rm",
+    "-e",
+    "GITHUB_PERSONAL_ACCESS_TOKEN",
+    "ghcr.io/github/github-mcp-server",
+]
+env = { "GITHUB_PERSONAL_ACCESS_TOKEN" = "$GITHUB_MCP_TOKEN" }
+env_key = "GITHUB_MCP_TOKEN"
