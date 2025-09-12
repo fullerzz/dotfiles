@@ -14,7 +14,7 @@ run = 'echo "running build tasks"'
 [settings]
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
-lockfile = true
+lockfile = false
 python.uv_venv_auto = true
 
 gpg_verify = true
