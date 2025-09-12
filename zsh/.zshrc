@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export PATH="$HOME/.bun/bin:$PATH"
 
 export XDG_CONFIG_HOME=$HOME/.config
 
