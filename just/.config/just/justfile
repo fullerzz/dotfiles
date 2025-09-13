@@ -31,9 +31,16 @@ uvx-up:
     @echo "\n⚡️{{ BOLD + MAGENTA }} Updating uv tools...{{ NORMAL }}"
     uv tool upgrade --all
 
+# update global npm packages for bun and pnpm
+npm-up:
+    @echo "\n🤮{{ BOLD + YELLOW }} Updating bun and pnpm global packages...{{ NORMAL }}"
+    bun update -g
+    pnpm -g update
+
 # run updates for all tools
 send-it:
     @echo "🗿{{ BOLD + CYAN }} Running updates for all tools...{{ NORMAL }}"
     @just -g brewupdg
     @just -g uvx-up
+    @just -g npm-up
     @echo "\n✅{{ BOLD + GREEN }} All tools updated successfully!{{ NORMAL }}"
