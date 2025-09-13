@@ -20,6 +20,20 @@ mise activate fish | source
 # AWS
 set -x AWS_DEFAULT_REGION "us-west-1"
 
+# Secrets from macOS Keychain
+# Load GitHub MCP token from Keychain if present
+set -l __gh_token (security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
+if test -n "$__gh_token"
+	set -gx GITHUB_MCP_TOKEN "$__gh_token"
+else
+	# Show a warning in interactive shells if the token is missing
+	if status --is-interactive
+		set_color red
+		echo "Warning: GITHUB_MCP_TOKEN not found in Keychain (service 'Github-PAC-OpenCode')"
+		set_color normal
+	end
+end
+
 # eza aliases (parity with zsh)
 function ls
 	eza --color=always --group-directories-first --icons=always $argv
@@ -56,3 +70,8 @@ end
 function l.
 	eza -a | grep -E '^\.'
 end
+
+function fish_greeting
+    fastfetch -c examples/10.jsonc
+end
+
