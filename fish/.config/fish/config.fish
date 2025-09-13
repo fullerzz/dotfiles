@@ -1,3 +1,6 @@
+# homebrew
+fish_add_path /opt/homebrew/bin
+
 starship init fish | source
 zoxide init fish | source
 atuin init fish | source
@@ -33,6 +36,10 @@ else
 		set_color normal
 	end
 end
+
+# carapace
+set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+carapace _carapace | source
 
 # eza aliases (parity with zsh)
 function ls
