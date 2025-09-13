@@ -142,6 +142,12 @@ export COMPOSE_BAKE=true
 #iterm2 shell integration
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# carapace
+export LS_COLORS=$(vivid generate dracula)
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 alias cd="z"
 alias clear="clear -x"
 # eza aliases
