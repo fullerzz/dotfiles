@@ -1,7 +1,7 @@
 font-family = "FiraCode Nerd Font Retina"
 font-size = 18.5
 bold-is-bright = true
-theme = "catppuccin-mocha"
+theme = "catppuccin mocha"
 mouse-hide-while-typing = true
 background-opacity = 0.95
 background-blur-radius = 20
