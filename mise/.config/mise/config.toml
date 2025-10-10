@@ -9,7 +9,6 @@ slsa-verifier = "latest"
 cosign = "latest"
 gleam = "latest"
 minisign = "latest"
-oxlint = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
