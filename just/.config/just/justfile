@@ -35,7 +35,7 @@ uvx-up:
 npm-up:
     @echo "\n🤮{{ BOLD + YELLOW }} Updating bun and pnpm global packages...{{ NORMAL }}"
     bun update -g
-    pnpm -g update
+    pnpm -g update --latest
 
 # run updates for all tools
 send-it:
