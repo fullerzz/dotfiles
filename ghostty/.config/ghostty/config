@@ -28,6 +28,7 @@ window-theme = ghostty
 window-vsync = true
 desktop-notifications = true
 macos-option-as-alt = true
+bell-features=system,attention,title,border
 
 quick-terminal-position = bottom
 quick-terminal-space-behavior = remain
