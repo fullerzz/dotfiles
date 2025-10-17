@@ -36,10 +36,46 @@ else
 		set_color normal
 	end
 end
+# Load GitHub Classic token from Keychain if present
+set -l __gh_token (security find-generic-password -s "GITHUB_TOKEN_CLASSIC" -w 2>/dev/null)
+if test -n "$__gh_token"
+	set -gx GITHUB_TOKEN "$__gh_token"
+else
+	# Show a warning in interactive shells if the token is missing
+	if status --is-interactive
+		set_color red
+		echo "Warning: GITHUB_TOKEN not found in Keychain (service 'GITHUB_TOKEN_CLASSIC')"
+		set_color normal
+	end
+end
 
 # carapace
 set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
 carapace _carapace | source
+
+# SSH agent (Homebrew OpenSSH + YubiKey)
+if status --is-interactive
+	# Start ssh-agent if not already running
+	if not pgrep -f ssh-agent > /dev/null
+		set -l __agent_out (ssh-agent -s)
+		# Extract and export SSH_AUTH_SOCK and SSH_AGENT_PID from agent output
+		set -l __sock (string match -rg 'SSH_AUTH_SOCK=([^;]+);' $__agent_out)
+		set -l __pid  (string match -rg 'SSH_AGENT_PID=([0-9]+);' $__agent_out)
+		if test -n "$__sock"
+			set -gx SSH_AUTH_SOCK "$__sock"
+		end
+		if test -n "$__pid"
+			set -gx SSH_AGENT_PID "$__pid"
+		end
+	end
+
+	# Auto-load SSH keys on shell start (FIDO2/ED25519-SK)
+	if test -n "$SSH_AGENT_PID"; and test -f ~/.ssh/id_ed25519_sk
+		if not ssh-add -l 2>/dev/null | grep -q 'ED25519-SK'
+			ssh-add ~/.ssh/id_ed25519_sk 2>/dev/null
+		end
+	end
+end
 
 # eza aliases (parity with zsh)
 function ls
