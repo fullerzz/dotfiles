@@ -6,8 +6,6 @@ go = "1.25"
 usage = "latest"
 zig = "0.15"
 slsa-verifier = "latest"
-cosign = "latest"
-gleam = "latest"
 minisign = "latest"
 
 [tasks.build]
