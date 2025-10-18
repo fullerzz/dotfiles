@@ -58,3 +58,5 @@
 	repo = /Users/zachfuller/Code/Python/borgboi
 	repo = /Users/zachfuller/Code/Python/github-feed
 	repo = /Users/zachfuller/Code/Node/Angular/gh-feed-ui
+	strategy = incremental
+	auto = true
