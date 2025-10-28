@@ -1,4 +1,5 @@
 font-family = "FiraCode Nerd Font Retina"
+# font-family = "BerkeleyMono Nerd Font Mono"
 font-size = 18.5
 bold-is-bright = true
 theme = "catppuccin mocha"
