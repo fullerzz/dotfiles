@@ -7,6 +7,7 @@ usage = "latest"
 zig = "0.15"
 slsa-verifier = "latest"
 minisign = "latest"
+fnox = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
