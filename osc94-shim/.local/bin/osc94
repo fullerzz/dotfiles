@@ -1,0 +1,15 @@
+# ~/.local/bin/osc94   (chmod +x)
+#!/usr/bin/env bash
+# Usage: osc94 <state> <percent>
+state="${1:-1}"
+percent="${2:-0}"
+
+seq="\e]9;4;${state};${percent}\a"
+
+if [ -n "$TMUX" ]; then
+  # Wrap for tmux passthrough
+  printf "\ePtmux;\e%s\e\\ " "$seq"
+else
+  # Send directly (outside tmux)
+  printf "%b" "$seq"
+fi
