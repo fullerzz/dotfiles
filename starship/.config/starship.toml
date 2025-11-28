@@ -26,3 +26,9 @@ symbol = '󱍟 '
 
 [memory_usage]
 disabled = false
+
+[golang]
+symbol = ' '
+
+[python]
+symbol = ' '
