@@ -1,0 +1,79 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "theme": "tokyonight",
+    "model": "anthropic/claude-sonnet-4-5",
+    "small_model": "anthropic/claude-haiku-4-5",
+    "autoshare": false,
+    "autoupdate": true,
+    "provider": {
+        "ollama": {
+            "npm": "@ai-sdk/openai-compatible",
+            "options": {
+                "baseURL": "http://localhost:11434/v1"
+            },
+            "models": {
+                "qwen3-coder:30b": {},
+                "qwen3:4b": {},
+                "gpt-oss:20b": {}
+            }
+        },
+        "openrouter": {
+            "models": {
+                "moonshotai/kimi-k2": {},
+            }
+        },
+        "openai": {
+            "models": {
+                "gpt-5": {
+                    "options": {
+                        "reasoningEffort": "high",
+                        "textVerbosity": "low",
+                        "reasoningSummary": "auto",
+                        "include": [
+                            "reasoning.encrypted_content"
+                        ]
+                    }
+                }
+            }
+        },
+        "lmstudio": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "LM Studio (local)",
+            "options": {
+                "baseURL": "http://127.0.0.1:1234/v1"
+            },
+            "models": {
+                "openai/gpt-oss-20b": {
+                    "name": "gpt-oss-20b (local)"
+                }
+            }
+        }
+    },
+    "mcp": {
+        "github-mcp": {
+            "type": "local",
+            "command": [
+                "docker",
+                "run",
+                "-i",
+                "--rm",
+                "-e",
+                "GITHUB_PERSONAL_ACCESS_TOKEN",
+                "ghcr.io/github/github-mcp-server"
+            ],
+            "enabled": true,
+            "environment": {
+                "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_MCP_TOKEN}"
+            }
+        },
+        "context7": {
+            "type": "local",
+            "command": [
+                "bunx",
+                "-y",
+                "@upstash/context7-mcp"
+            ],
+            "enabled": true
+        }
+    }
+}
