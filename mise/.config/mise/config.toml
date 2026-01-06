@@ -20,3 +20,4 @@ python.uv_venv_auto = true
 
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
+disable_backends = ["ubi"]
