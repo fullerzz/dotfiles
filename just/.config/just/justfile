@@ -44,3 +44,9 @@ send-it:
     @just -g uvx-up
     @just -g npm-up
     @echo "\n✅{{ BOLD + GREEN }} All tools updated successfully!{{ NORMAL }}"
+
+# install specified python version using pyenv
+[unix]
+pyenv-install PYTHON_VERSION:
+    @echo "\n🐍{{ BOLD + BLUE }} Installing optimized build of Python {{ PYTHON_VERSION }}...{{ NORMAL }}"
+    PYTHON_CFLAGS='-march=native -mtune=native' CONFIGURE_OPTS='--enable-optimizations --with-lto' pyenv install {{ PYTHON_VERSION }} --verbose
