@@ -2,12 +2,13 @@
 NODE_ENV = 'production'
 
 [tools]
-go = "1.25"
+go = "1.26"
 usage = "latest"
 zig = "0.15"
 slsa-verifier = "latest"
 minisign = "latest"
 fnox = "latest"
+crush = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
