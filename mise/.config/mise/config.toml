@@ -17,7 +17,7 @@ run = 'echo "running build tasks"'
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
 lockfile = false
-python.uv_venv_auto = true
+python.uv_venv_auto = "source"
 
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
