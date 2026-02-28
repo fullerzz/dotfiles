@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+export PATH="$(brew --prefix)/opt/openssh/bin:$PATH"
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
 
@@ -6,6 +7,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 # load secrets from OSX keychain
 export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w)
+export GITHUB_TOKEN=$(security find-generic-password -s "GITHUB_TOKEN_CLASSIC" -w)
 
 # homebrew
 if type brew &>/dev/null; then
@@ -74,15 +76,17 @@ export AWS_DEFAULT_REGION="us-west-1"
 eval "$(starship init zsh)"
 
 # fzf
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_DEFAULT_OPTS=" \
---tmux 90% --layout=reverse --inline-info --border \
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
---color=selected-bg:#494d64 \
---multi"
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules'
+export FZF_DEFAULT_OPTS="--height ~90% --layout=reverse --inline-info --border"
+# export FZF_DEFAULT_OPTS=" \
+# --tmux 90% --layout=reverse --inline-info --border \
+# --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+# --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+# --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+# --color=selected-bg:#494d64 \
+# --multi"
 export FZF_CTRL_T_OPTS="
+  --height ~90%
   --style full
   --walker-skip .git,node_modules,target,.venv
   --preview 'bat -n --color=always {}'
@@ -128,13 +132,17 @@ export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 # borgboi completion
 eval "$(_BB_COMPLETE=zsh_source bb)"
-eval "$(_BORGBOI_COMPLETE=zsh_source borgboi)"
+#eval "$(_BORGBOI_COMPLETE=zsh_source borgboi)"
 
 # atuin
 eval "$(atuin init zsh)"
 
 # mise
 eval "$(mise activate zsh)"
+
+# fnox
+export FNOX_AGE_KEY_FILE="~/.ssh/id_ed25519"
+eval "$(fnox activate zsh)"
 
 # docker
 export COMPOSE_BAKE=true
@@ -148,8 +156,21 @@ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
+# Use Homebrew SSH with proper agent setup
+# if ! pgrep -f "ssh-agent" > /dev/null; then
+#     eval "$("$(brew --prefix)"/bin/ssh-agent -s)" > /dev/null
+# fi
+
+# Auto-load YubiKey on shell start
+# if [ -n "$SSH_AGENT_PID" ] && [ -f ~/.ssh/id_ed25519_sk ]; then
+#     ssh-add -l | grep -q "ED25519-SK" || ssh-add ~/.ssh/id_ed25519_sk 2>/dev/null
+# fi
+
+
+eval $(thefuck --alias)
 alias cd="z"
 alias clear="clear -x"
+alias grep="rg"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons=always $@'
 alias ll='eza -la --icons=always --octal-permissions --group-directories-first'
@@ -169,3 +190,6 @@ fastfetch -c examples/10.jsonc
 export PATH="$PATH:/Users/zachfuller/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# Amp CLI
+export PATH="/Users/zachfuller/.amp/bin:$PATH"
