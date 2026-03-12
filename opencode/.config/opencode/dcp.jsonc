@@ -3,14 +3,14 @@
     // Protect from pruning for <turns> message turns past tool invocation
     "turnProtection": {
         "enabled": true,
-        "turns": 4,
+        "turns": 6,
     },
     "tools": {
         // Shared settings for all prune tools
         "settings": {
             // Nudge the LLM to use prune tools (every <nudgeFrequency> tool results)
             "nudgeEnabled": true,
-            "nudgeFrequency": 12,
+            "nudgeFrequency": 15,
             // Token limit at which the model compresses session context
             // to keep the model in the "smart zone" (not a hard limit)
             // Accepts: number or "X%" (percentage of model's context window)
@@ -61,7 +61,7 @@
         "purgeErrors": {
             "enabled": true,
             // Number of turns before errored tool inputs are pruned
-            "turns": 5,
+            "turns": 8,
             // Additional tools to protect from pruning
             "protectedTools": [],
         },
