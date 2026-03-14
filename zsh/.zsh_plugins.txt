@@ -1,5 +1,7 @@
 # .zsh_plugins.txt - comments begin with "#"
 
+mattmc3/ez-compinit
+
 # set up Zsh completions with plugins
 zsh-users/zsh-completions kind:fpath path:src
 

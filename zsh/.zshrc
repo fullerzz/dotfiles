@@ -2,7 +2,7 @@
 export PATH="$(brew --prefix)/opt/openssh/bin:$PATH"
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
-
+export EDITOR="code --wait"
 export XDG_CONFIG_HOME=$HOME/.config
 
 # load secrets from OSX keychain
@@ -131,7 +131,7 @@ export ZELLIJ_CONFIG_DIR=$XDG_CONFIG_HOME/zellij
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 # borgboi completion
-eval "$(_BB_COMPLETE=zsh_source bb)"
+#eval "$(_BB_COMPLETE=zsh_source bb)"
 #eval "$(_BORGBOI_COMPLETE=zsh_source borgboi)"
 
 # atuin
