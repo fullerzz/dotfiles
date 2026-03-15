@@ -1,17 +1,26 @@
+# bootstrap homebrew if not installed
+if ! command -v brew &>/dev/null; then
+  echo ">>> Homebrew not found. Installing..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Apple Silicon path; Intel would be /usr/local
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+BREW_PREFIX=$(brew --prefix)
+
 # If you come from bash you might have to change your $PATH.
-export PATH="$(brew --prefix)/opt/openssh/bin:$PATH"
+export PATH="$BREW_PREFIX/opt/openssh/bin:$PATH"
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
 export EDITOR="code --wait"
 export XDG_CONFIG_HOME=$HOME/.config
 
 # load secrets from OSX keychain
-export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w)
-export GITHUB_TOKEN=$(security find-generic-password -s "GITHUB_TOKEN_CLASSIC" -w)
+export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
+export GITHUB_TOKEN=$(security find-generic-password -s "GITHUB_TOKEN_CLASSIC" -w 2>/dev/null)
 
-# homebrew
+# homebrew completions
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
 fi
 
 # nvm
@@ -31,14 +40,14 @@ export ZSH=$(antidote path ohmyzsh/ohmyzsh)
 export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="pnpm *"
 export ZSH_AUTOSUGGEST_STRATEGY=(atuin history completion)
 bindkey '^ ' autosuggest-accept
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-autocomplete
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
 zstyle ':autocomplete:*' ignored-input 'git *'
 zstyle ':autocomplete:*' delay 0.2  # seconds (float)
-zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' min-input 2
 zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
@@ -48,12 +57,13 @@ zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 export PATH=$(echo "$PATH" | sed -e 's/:\/mnt[^:]*//g')
 alias python=python3
 
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # pnpm
-export PNPM_HOME="/Users/zachfuller/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -67,7 +77,7 @@ esac
 eval "$(zoxide init zsh)"
 
 # add ~/bin to PATH
-export PATH="~/bin:~/Go/bin:$PATH"
+export PATH="$HOME/bin:$HOME/Go/bin:$PATH"
 
 # AWS
 export AWS_DEFAULT_REGION="us-west-1"
@@ -118,8 +128,6 @@ _fzf_comprun() {
 }
 source <(fzf --zsh)
 
-# neovim
-export PATH=/opt/nvim-linux64/bin:$PATH
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -141,7 +149,7 @@ eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
 
 # fnox
-export FNOX_AGE_KEY_FILE="~/.ssh/id_ed25519"
+export FNOX_AGE_KEY_FILE="$HOME/.ssh/id_ed25519"
 eval "$(fnox activate zsh)"
 
 # docker
@@ -158,7 +166,7 @@ source <(carapace _carapace)
 
 # Use Homebrew SSH with proper agent setup
 # if ! pgrep -f "ssh-agent" > /dev/null; then
-#     eval "$("$(brew --prefix)"/bin/ssh-agent -s)" > /dev/null
+#     eval "$("$BREW_PREFIX"/bin/ssh-agent -s)" > /dev/null
 # fi
 
 # Auto-load YubiKey on shell start
@@ -187,9 +195,9 @@ alias l.="eza -a | grep -E '^\.'"
 fastfetch -c examples/10.jsonc
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/zachfuller/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
 # Amp CLI
-export PATH="/Users/zachfuller/.amp/bin:$PATH"
+export PATH="$HOME/.amp/bin:$PATH"

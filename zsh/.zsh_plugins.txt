@@ -19,3 +19,4 @@ mattmc3/zfunctions
 zsh-users/zsh-syntax-highlighting
 #zsh-users/zsh-autosuggestions
 #marlonrichert/zsh-autocomplete
+#mattmc3/zephyr path:plugins/completion
