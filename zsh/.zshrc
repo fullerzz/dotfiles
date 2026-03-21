@@ -17,6 +17,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 # load secrets from OSX keychain
 export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
 export GITHUB_TOKEN=$(security find-generic-password -s "GITHUB_TOKEN_CLASSIC" -w 2>/dev/null)
+export GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_MCP_TOKEN
 
 # homebrew completions
 if type brew &>/dev/null; then
