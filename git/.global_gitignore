@@ -18,4 +18,6 @@ venv
 .env
 
 mise.local.toml
+*.local.toml
+*.local.json
 
