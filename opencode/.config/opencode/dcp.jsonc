@@ -41,7 +41,7 @@
     // Unified context compression tool and behavior settings
     "compress": {
         // Permission mode: "allow" (no prompt), "ask" (prompt), "deny" (tool not registered)
-        "permission": "ask",
+        "permission": "allow",
         // Show compression content in a chat notification
         "showCompression": false,
         // Soft upper threshold: above this, DCP keeps injecting strong
