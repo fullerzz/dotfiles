@@ -1,16 +1,23 @@
 [tools]
-node = "24"
+node = "25"
 go = 'latest'
 rust = 'latest'
 usage = "latest"
-zig = "0.14"
+zig = "0.15"
 task = "latest"
 tflint = "latest"
 slsa-verifier = "latest"
 cosign = "latest"
+fastfetch = "latest"
+vivid = "latest"
+ast-grep = "latest"
+neovim = "latest"
+chezmoi = "latest"
+"aqua:opentofu/tofu-ls" = "latest"
+direnv = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["python"]
+idiomatic_version_file_enable_tools = ["node"]
 env_file = '.env'
 gpg_verify = true
 
