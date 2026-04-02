@@ -1,3 +1,4 @@
-python-downloads="manual"
-python-preference="system"
+python-downloads = "manual"
+python-preference = "system"
 
+exclude-newer = "12 hours"
