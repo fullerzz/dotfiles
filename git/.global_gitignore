@@ -21,3 +21,5 @@ mise.local.toml
 *.local.toml
 *.local.json
 
+.codex/environments
+.claude/worktrees
