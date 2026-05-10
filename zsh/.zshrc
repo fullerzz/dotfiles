@@ -13,6 +13,7 @@ export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
 export EDITOR="code --wait"
 export XDG_CONFIG_HOME=$HOME/.config
+export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 # load secrets from OSX keychain
 export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
@@ -26,7 +27,7 @@ fi
 
 # nvm
 zstyle ':omz:plugins:nvm' lazy yes
-zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx ng
+#zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx ng
 # antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
@@ -64,10 +65,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 # pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
+export PNPM_HOME="/Users/zachfuller/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
 
@@ -179,7 +180,8 @@ source <(carapace _carapace)
 eval $(thefuck --alias)
 alias cd="z"
 alias clear="clear -x"
-alias grep="rg"
+alias cat="bat -pp"
+#alias grep="rg"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons=always $@'
 alias ll='eza -la --icons=always --octal-permissions --group-directories-first'
@@ -198,7 +200,6 @@ fastfetch -c examples/10.jsonc
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
-
 
 # Amp CLI
 export PATH="$HOME/.amp/bin:$PATH"
