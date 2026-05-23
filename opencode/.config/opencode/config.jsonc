@@ -94,8 +94,16 @@
     "graphiti-mem": {
       "type": "remote",
       "url": "http://localhost:8000/mcp/",
-      "enabled": true
+      "enabled": false
     },
+    "obscura": {
+      "type": "local",
+      "command": [
+        "obscura",
+        "mcp"
+      ],
+      "enabled": true
+    }
   },
   "lsp": {
     "opentofu-ls": {
