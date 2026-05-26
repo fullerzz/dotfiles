@@ -26,7 +26,7 @@ if type brew &>/dev/null; then
 fi
 
 # nvm
-zstyle ':omz:plugins:nvm' lazy yes
+#zstyle ':omz:plugins:nvm' lazy yes
 #zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx ng
 # antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
@@ -62,10 +62,19 @@ alias python=python3
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if command -v pyenv >/dev/null 2>&1; then
+  if ! command -v gtimeout >/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+  elif pyenv_init="$(gtimeout 5s pyenv init - 2>/dev/null)"; then
+    eval "$pyenv_init"
+  elif [[ $? -eq 124 ]]; then
+    printf 'pyenv init timed out after 5 seconds; skipping shell integration\n' >&2
+  fi
+  unset pyenv_init
+fi
 
 # pnpm
-export PNPM_HOME="/Users/zachfuller/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
@@ -193,6 +202,11 @@ alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=al
 alias lS='eza -1 --color=always --group-directories-first --icons=always'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons=always'
 alias l.="eza -a | grep -E '^\.'"
+
+# lima vm aliases
+alias agentvm='limactl shell agent-dev'
+alias agentvm-stop='limactl stop agent-dev'
+alias agentvm-restart='limactl restart agent-dev'
 
 # fastfetch
 fastfetch -c examples/10.jsonc

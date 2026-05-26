@@ -12,7 +12,7 @@ ohmyzsh/ohmyzsh path:plugins/git  # load OMZ plugins
 ohmyzsh/ohmyzsh path:plugins/git-extras
 ohmyzsh/ohmyzsh path:plugins/git-lfs
 ohmyzsh/ohmyzsh path:plugins/direnv
-ohmyzsh/ohmyzsh path:plugins/nvm
+#ohmyzsh/ohmyzsh path:plugins/nvm
 
 # popular fish-like plugins
 mattmc3/zfunctions
