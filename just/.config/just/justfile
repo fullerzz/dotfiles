@@ -46,7 +46,45 @@ send-it:
     @echo "\n✅{{ BOLD + GREEN }} All tools updated successfully!{{ NORMAL }}"
 
 # install specified python version using pyenv
-[unix]
 pyenv-install PYTHON_VERSION:
     @echo "\n🐍{{ BOLD + BLUE }} Installing optimized build of Python {{ PYTHON_VERSION }}...{{ NORMAL }}"
     PYTHON_CFLAGS='-march=native -mtune=native' CONFIGURE_OPTS='--enable-optimizations --with-lto' pyenv install {{ PYTHON_VERSION }} --verbose
+
+# start the lima agent-dev VM
+[group('lima')]
+agentvm-start:
+    @echo "\n🚀{{ BOLD + MAGENTA }} Starting lima agent-dev VM...{{ NORMAL }}"
+    limactl start --name=agent-dev ~/.lima-templates/agent-dev.yaml
+
+# restart the lima agent-dev VM
+[group('lima')]
+agentvm-restart:
+    @echo "\n🔄{{ BOLD + MAGENTA }} Restarting lima agent-dev VM...{{ NORMAL }}"
+    limactl restart agent-dev
+
+# stop the lima agent-dev VM
+[group('lima')]
+agentvm-stop:
+    @echo "\n🛑{{ BOLD + MAGENTA }} Stopping lima agent-dev VM...{{ NORMAL }}"
+    -limactl stop agent-dev
+
+# delete the lima agent-dev VM
+[group('lima')]
+[confirm('Are you sure you want to delete the lima agent-dev VM? This action cannot be undone. (y/n)')]
+agentvm-delete:
+    @echo "\n❌{{ BOLD + MAGENTA }} Deleting lima agent-dev VM...{{ NORMAL }}"
+    -limactl delete agent-dev
+
+# archive the lima agent-dev VM to a baseline snapshot
+[group('lima')]
+agentvm-archive: agentvm-stop
+    @echo "\n♻️{{ BOLD + MAGENTA }} Archiving lima agent-dev VM to baseline snapshot...{{ NORMAL }}"
+    tar -C ~/.lima -czf ~/agent-dev-clean-baseline.tgz agent-dev
+
+# restore the lima agent-dev VM baseline snapshot
+[group('lima')]
+[confirm('Are you sure you want to restore the lima agent-dev VM baseline snapshot? This action cannot be undone. (y/n)')]
+agentvm-restore: agentvm-stop agentvm-delete
+    @echo "\n♻️{{ BOLD + MAGENTA }} Restoring lima agent-dev VM baseline snapshot...{{ NORMAL }}"
+    tar -C ~/.lima -xzf ~/agent-dev-clean-baseline.tgz
+    limactl start agent-dev
