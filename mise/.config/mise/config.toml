@@ -4,11 +4,12 @@ NODE_ENV = 'production'
 [tools]
 go = "1.26"
 usage = "latest"
-zig = "0.15"
+zig = "0.16"
 slsa-verifier = "latest"
 minisign = "latest"
 fnox = "latest"
-crush = "latest"
+aube = "latest"
+prettier = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
@@ -22,3 +23,6 @@ python.uv_venv_auto = "source"
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
 disable_backends = ["ubi"]
+
+[settings.npm]
+package_manager = "aube"
