@@ -10,6 +10,9 @@ minisign = "latest"
 fnox = "latest"
 aube = "latest"
 prettier = "latest"
+"npm:hunkdiff" = "latest"
+"npm:codex-wakatime" = "latest"
+"npm:@usebruno/cli" = { version = "latest", pnpm_args = "--allow-build=@usebruno/cli --config.node-linker=hoisted" }
 
 [tasks.build]
 run = 'echo "running build tasks"'
@@ -22,7 +25,7 @@ python.uv_venv_auto = "source"
 
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
-disable_backends = ["ubi"]
+disable_backends = ["ubi", "asdf"]
 
 [settings.npm]
-package_manager = "aube"
+package_manager = "pnpm"
