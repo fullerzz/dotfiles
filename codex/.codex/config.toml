@@ -1,0 +1,246 @@
+model = "gpt-5.4-mini"
+model_verbosity = "medium"
+model_reasoning_summary = "auto"
+model_supports_reasoning_summaries = true
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+model_reasoning_effort = "high"
+personality = "pragmatic"
+notify = [
+  "/Users/zachfuller/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+  "turn-ended",
+  "--previous-notify",
+  "[\"uv\",\"run\",\"\\/Users\\/zachfuller\\/.codex\\/ntfy.py\"]",
+]
+approvals_reviewer = "guardian_subagent"
+
+[features]
+unified_exec = true
+shell_snapshot = true
+hooks = true
+memories = true
+terminal_resize_reflow = true
+goals = true
+js_repl = false
+
+[tui]
+notifications = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[projects."/Users/zachfuller/Code/Python/pauselock"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/Angular/pauselock-ui"]
+trust_level = "trusted"
+
+[projects."/"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Python/borgboi"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/Angular/prediction-hub"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Go/plock"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-06-16/hatch-pet-users-zachfuller-codex-skills"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-06-18/hel"]
+trust_level = "trusted"
+
+[mcp_servers.context7]
+command = "bunx"
+args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.time]
+command = "uvx"
+args = ["mcp-server-time", "--local-timezone=America/Phoenix"]
+
+[mcp_servers.ng]
+command = "bunx"
+args = ["-y", "@angular/cli", "mcp"]
+
+[mcp_servers.linear]
+command = "bunx"
+args = ["-y", "mcp-remote", "https://mcp.linear.app/sse"]
+enabled = false
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/zachfuller/.codex"
+CODEX_HOME = "/Users/zachfuller/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "4cfaeb70b54d114e1cd56bc0f85d04e1b344a5049cddb729e2b1161b9ff3008a"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.616.41845"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+
+[mcp_servers.obscura]
+enabled = true
+command = "obscura"
+args = ["mcp", "--stealth"]
+
+[notice]
+hide_gpt5_1_migration_prompt = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+
+[notice.model_migrations]
+"gpt-5.1-codex-max" = "gpt-5.2-codex"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."codex-security@openai-curated"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."ponytail@ponytail"]
+enabled = true
+
+[marketplaces.openai-bundled]
+last_updated = "2026-06-20T18:19:16Z"
+source_type = "local"
+source = "/Users/zachfuller/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-06-20T03:53:17Z"
+source_type = "local"
+source = "/Users/zachfuller/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[marketplaces.ponytail]
+last_updated = "2026-06-19T13:57:48Z"
+last_revision = "0403c4dd50ee6d0db2c3ec70b2be6655f9cb65a9"
+source_type = "git"
+source = "https://github.com/DietrichGebert/ponytail.git"
+
+[hooks.state]
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:1a9324c21b5fa9bccb488fc366f9d83df8e92374d4faaa179ee490fcfba1e386"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:e1deabbcea0311202b3202cc34db64b637bcfbb0f34783fc99e60d8335acea1a"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:permission_request:0:0"]
+trusted_hash = "sha256:3a82ee1e42cbf5c5f5fe8edccbf6f70517b1cf8c7643b4f9725144980b653257"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:c25ace5459375242db902e45bf3d5fbd2434096a716e9bfcf0d99971e8dc641f"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:1cf1e18abb1565fd44765758b1f87ad8fd5404cc8b35b2bb7330832df0c07c37"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:stop:1:0"]
+trusted_hash = "sha256:d25b65c767f85263d1d7aa5d0feb07189008b068984062d21a9adfee7e18a8ea"
+
+[hooks.state."/Users/zachfuller/.codex/config.toml:post_tool_use:0:0"]
+trusted_hash = "sha256:4d8799d3ca0e642c0c8079063f1c0214a71e47039bdd8a3d82f90f1fdeba06fa"
+
+[hooks.state."/Users/zachfuller/.codex/config.toml:stop:0:0"]
+trusted_hash = "sha256:9338979286d8ee0aa1f8b8176051ff00d8f5e78a4fc449bfdb34b102a591b9fe"
+
+[hooks.state."ponytail@ponytail:hooks/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:195e73e498a4cdb40bbe765719d39371ac72c0ebb084fee1beee9d28d21fb7a0"
+
+[hooks.state."ponytail@ponytail:hooks/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:f79c8de133c1109b841f9835a9d032231900a0d96ecf5f6d1866132df5ca4aa4"
+
+[hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:session_start:0:0"]
+trusted_hash = "sha256:195e73e498a4cdb40bbe765719d39371ac72c0ebb084fee1beee9d28d21fb7a0"
+
+[hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:f79c8de133c1109b841f9835a9d032231900a0d96ecf5f6d1866132df5ca4aa4"
+
+[[hooks.Stop]]
+[[hooks.Stop.hooks]]
+type = "command"
+command = "codex-wakatime --hook"
+timeout = 60
+
+[[hooks.PostToolUse]]
+matcher = "apply_patch"
+
+[[hooks.PostToolUse.hooks]]
+type = "command"
+command = "codex-wakatime --hook"
+timeout = 60
+
+[memories]
+generate_memories = true
+use_memories = true
+
+[desktop]
+appearanceDarkCodeThemeId = "catppuccin"
+sansFontSize = 16
+codeFontSize = 15
+usePointerCursors = true
+followUpQueueMode = "steer"
+preventSleepWhileRunning = true
+keepRemoteControlAwakeWhilePluggedIn = true
+git-branch-prefix = "cdx/"
+git-create-pull-request-as-draft = true
+git-pull-request-merge-method = "squash"
+git-show-sidebar-pr-icons = true
+git-commit-instructions = "Use semantic commit prefixes in git commit messages."
+notifications-turn-mode = "always"
+selected-avatar-id = "rocky"
+appearanceLightCodeThemeId = "catppuccin"
+show-context-window-usage = true
+dock-icon-preference = "codex-dark"
+hotkey-window-projectless-default-enabled = true
+
+[desktop.appearanceDarkChromeTheme]
+accent = "#cba6f7"
+contrast = 60
+ink = "#cdd6f4"
+opaqueWindows = false
+surface = "#1e1e2e"
+
+[desktop.appearanceDarkChromeTheme.fonts]
+code = "'BerkeleyMono Nerd Font Mono'"
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = "#a6e3a1"
+diffRemoved = "#f38ba8"
+skill = "#cba6f7"
+
+[desktop.appearanceLightChromeTheme]
+accent = "#8839ef"
+contrast = 45
+ink = "#4c4f69"
+opaqueWindows = false
+surface = "#eff1f5"
+fonts = {}
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#40a02b"
+diffRemoved = "#d20f39"
+skill = "#8839ef"
