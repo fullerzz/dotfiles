@@ -12,6 +12,7 @@ export PATH="$BREW_PREFIX/opt/openssh/bin:$PATH"
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
 export EDITOR="code --wait"
+export PONYTAIL_DEFAULT_MODE="lite"
 export XDG_CONFIG_HOME=$HOME/.config
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
@@ -195,7 +196,7 @@ alias cat="bat -pp"
 alias ls='eza --color=always --group-directories-first --icons=always $@'
 alias ll='eza -la --icons=always --octal-permissions --group-directories-first'
 alias l='eza -bGF --header --git --color=always --group-directories-first --icons=always'
-alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons=always' 
+alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons=always'
 alias la='eza --long --all --group --group-directories-first'
 alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons=always'
 
