@@ -1,4 +1,4 @@
-model = "gpt-5.4-mini"
+model = "gpt-5.5"
 model_verbosity = "medium"
 model_reasoning_summary = "auto"
 model_supports_reasoning_summaries = true
@@ -13,6 +13,7 @@ notify = [
   "[\"uv\",\"run\",\"\\/Users\\/zachfuller\\/.codex\\/ntfy.py\"]",
 ]
 approvals_reviewer = "guardian_subagent"
+default_permissions = "dev"
 
 [features]
 unified_exec = true
@@ -28,6 +29,27 @@ notifications = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+
+[permissions.dev]
+description = "Permissions for development purposes. These permissions are more permissive than the default and should be used with caution. They allow Codex to read from and write to specified directories on your filesystem, which can be useful for testing and development but may pose security risks if misused."
+extends = ":workspace"
+
+[permissions.dev.filesystem]
+":minimal" = "read"
+"/Users/zachfuller/Code/Go" = "write"
+"/Users/zachfuller/Code/Python" = "write"
+"/Users/zachfuller/Code/Node" = "write"
+"/Users/zachfuller/.cache/uv" = "write"
+"/Users/zachfuller/.cache/bun" = "write"
+"/Users/zachfuller/.local" = "read"
+"/Users/zachfuller/.bin" = "read"
+"/Users/zachfuller/Library/Caches/go-build" = "write"
+"/Users/zachfuller/go/pkg/mod" = "write"
+"/Users/zachfuller/Library/pnpm/store/v11" = "write"
+"/Users/zachfuller/Library/Caches/mise" = "write"
+
+[permissions.dev.network]
+enabled = true
 
 [projects."/Users/zachfuller/Code/Python/pauselock"]
 trust_level = "trusted"
@@ -51,6 +73,9 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/zachfuller/Documents/Codex/2026-06-18/hel"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/dotfiles"]
 trust_level = "trusted"
 
 [mcp_servers.context7]
@@ -81,12 +106,12 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_nod
 NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/zachfuller/.codex"
 CODEX_HOME = "/Users/zachfuller/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "4cfaeb70b54d114e1cd56bc0f85d04e1b344a5049cddb729e2b1161b9ff3008a"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "2c20141b13bec5a64cd2874d8e2df011430d5b1a70e4f5425aa10d01743311a8"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.616.41845"
+BROWSER_USE_CODEX_APP_VERSION = "26.616.51431"
 CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
 [mcp_servers.obscura]
@@ -126,7 +151,7 @@ enabled = true
 enabled = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-06-20T18:19:16Z"
+last_updated = "2026-06-21T13:54:04Z"
 source_type = "local"
 source = "/Users/zachfuller/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -136,8 +161,8 @@ source_type = "local"
 source = "/Users/zachfuller/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [marketplaces.ponytail]
-last_updated = "2026-06-19T13:57:48Z"
-last_revision = "0403c4dd50ee6d0db2c3ec70b2be6655f9cb65a9"
+last_updated = "2026-06-21T02:14:05Z"
+last_revision = "6da37bfa7d0282522c7785759f4d2f1544015354"
 source_type = "git"
 source = "https://github.com/DietrichGebert/ponytail.git"
 
