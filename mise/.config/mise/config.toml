@@ -14,6 +14,7 @@ prettier = "latest"
 "npm:codex-wakatime" = "latest"
 "npm:@usebruno/cli" = { version = "latest", pnpm_args = "--allow-build=@usebruno/cli --config.node-linker=hoisted" }
 node = ["24", "lts"]
+rust = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
