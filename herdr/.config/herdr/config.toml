@@ -1,0 +1,23 @@
+onboarding = false
+
+[ui]
+show_agent_labels_on_pane_borders = true
+prompt_new_tab_name = false
+
+[ui.sound]
+enabled = false
+
+[ui.toast]
+delivery = "terminal"
+
+[keys]
+prefix = "ctrl+a"
+rename_tab = "ctrl+,"
+previous_tab = "shift+left"
+next_tab = "shift+right"
+
+[[keys.command]]
+key = "prefix+shift+t"
+type = "plugin_action"
+command = "fullerzz.sesh.open-picker"
+description = "open Sesh picker"
