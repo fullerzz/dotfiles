@@ -21,3 +21,12 @@ key = "prefix+shift+t"
 type = "plugin_action"
 command = "fullerzz.sesh.open-picker"
 description = "open Sesh picker"
+
+[[keys.command]]
+key = "prefix+alt+e"
+type = "pane"
+command = "lazygit"
+description = "run lazygit"
+
+[experimental]
+pane_history = true
