@@ -20,6 +20,7 @@ export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAge
 export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
 export GITHUB_TOKEN=$(security find-generic-password -s "GITHUB_TOKEN_CLASSIC" -w 2>/dev/null)
 export GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_MCP_TOKEN
+export FORGEJO_TOKEN=$(security find-generic-password -s "FORGEJO_TOKEN" -w 2>/dev/null)
 
 # homebrew completions
 if type brew &>/dev/null; then
