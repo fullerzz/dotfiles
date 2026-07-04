@@ -10,11 +10,17 @@ minisign = "latest"
 fnox = "latest"
 aube = "latest"
 prettier = "latest"
-"npm:hunkdiff" = "latest"
 "npm:codex-wakatime" = "latest"
 "npm:@usebruno/cli" = { version = "latest", pnpm_args = "--allow-build=@usebruno/cli --config.node-linker=hoisted" }
 node = ["24", "lts"]
 rust = "latest"
+lazygit = "0.62.2"
+"cargo:difftastic" = "0.69.0"
+zoxide = "0.9.9"
+neovim = "0.12.3"
+starship = "latest"
+"cargo:mergiraf" = "latest"
+bat = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
