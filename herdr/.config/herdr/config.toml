@@ -3,6 +3,41 @@ onboarding = false
 [ui]
 show_agent_labels_on_pane_borders = true
 prompt_new_tab_name = false
+sidebar_width = 32
+sidebar_min_width = 18
+sidebar_max_width = 36
+mobile_width_threshold = 64
+mouse_capture = true
+mouse_scroll_lines = 3
+confirm_close = true
+pane_borders = true
+pane_gaps = true
+agent_panel_sort = "spaces"
+accent = "cyan"
+
+[ui.sidebar.agents]
+row_gap = 1
+rows = [["state_icon", "workspace", "tab"], ["agent", "state_text"]]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+    [
+        "state_icon",
+        "workspace",
+        "tab",
+    ],
+    [
+        "terminal_title_stripped",
+    ],
+    [
+        "agent",
+        "state_text",
+    ],
+]
+
+[ui.sidebar.spaces]
+row_gap = 0
+rows = [["state_icon", "workspace", "$sesh"], ["branch", "git_status"]]
 
 [ui.sound]
 enabled = false
@@ -12,9 +47,23 @@ delivery = "terminal"
 
 [keys]
 prefix = "ctrl+a"
+goto = "prefix+shift+g"
+detach = ["prefix+d", "prefix+q"]
 rename_tab = "ctrl+,"
 previous_tab = "shift+left"
 next_tab = "shift+right"
+last_pane = ["prefix+tab", "prefix+shift+left"]
+focus_pane_down = ["prefix+j", "shift+down"]
+focus_pane_up = ["prefix+k", "shift+up"]
+split_horizontal = ["prefix+minus", "prefix+\""]
+split_vertical = ["prefix+v", "prefix+|"]
+previous_workspace = ["prefix+shift+up"]
+next_workspace = ["prefix+shift+down"]
+close_workspace = ["prefix+shift+x"]
+rename_workspace = ["prefix+shift+r"]
+new_worktree = ["prefix+shift+w"]
+open_worktree = "prefix+shift+o"
+remove_worktree = "prefix+alt+d"
 
 [[keys.command]]
 key = "prefix+shift+t"
@@ -23,10 +72,17 @@ command = "fullerzz.sesh.open-picker"
 description = "open Sesh picker"
 
 [[keys.command]]
-key = "prefix+alt+e"
+key = "prefix+shift+l"
+type = "plugin_action"
+command = "fullerzz.sesh.last"
+description = "switch to previous session"
+
+[[keys.command]]
+key = ["prefix+g", "alt+g"]
 type = "pane"
 command = "lazygit"
 description = "run lazygit"
 
 [experimental]
 pane_history = true
+switch_ascii_input_source_in_prefix = true
