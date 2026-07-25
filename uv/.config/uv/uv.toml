@@ -1,4 +1,5 @@
-python-downloads = "manual"
+python-downloads = "automatic"
 python-preference = "system"
 
-exclude-newer = "12 hours"
+exclude-newer = "24 hours"
+preview-features = ["json-output", "pylock", "format", "malware-check"]
