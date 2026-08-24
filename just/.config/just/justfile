@@ -5,7 +5,18 @@ _default:
 brewupdg:
     @echo "\n🍺{{ BOLD + CYAN }} Updating Homebrew and upgrading packages...{{ NORMAL }}"
     brew update
+    brew outdated --greedy
     brew upgrade
+    brew cleanup
+    @just -g brew-bundle
+
+# generate or update existing Brewfile
+brew-bundle:
+    @echo "\n🍺{{ BOLD + CYAN }} Generating Brewfile...{{ NORMAL }}"
+    brew bundle dump --force --file=~/Brewfile
+    @echo "\n✅{{ BOLD + GREEN }}Brewfile generated!{{ NORMAL }}"
+    rsync -tv --mkpath -- ~/Brewfile /Volumes/Shibi/backups/
+    @echo "\n✅{{ BOLD + GREEN }}Brewfile backed up to UNAS2 Shibi/backups/Brewfile successfully!{{ NORMAL }}"
 
 # prune docker images, containers, volumes, and networks
 docker-prune:
@@ -24,17 +35,17 @@ git-clone-bare GIT_URL:
     git clone --bare {{GIT_URL}} .bare
     echo "gitdir: ./.bare" > .git
     git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
-    @echo "\n{{ BOLD + GREEN }}Bare git repo set up successfully!{{ NORMAL }}" 
+    @echo "\n{{ BOLD + GREEN }}Bare git repo set up successfully!{{ NORMAL }}"
 
 # update uv tools
 uvx-up:
     @echo "\n⚡️{{ BOLD + MAGENTA }} Updating uv tools...{{ NORMAL }}"
     uv tool upgrade --all
 
-# update global npm packages for bun and pnpm
+# update bun and pnpm-managed global packages (excluding hunkdiff's bun dependency path)
 npm-up:
     @echo "\n🤮{{ BOLD + YELLOW }} Updating bun and pnpm global packages...{{ NORMAL }}"
-    bun update -g
+    # bun update -g
     pnpm -g update --latest
 
 # run updates for all tools
