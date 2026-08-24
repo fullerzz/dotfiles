@@ -2,9 +2,9 @@
 NODE_ENV = 'production'
 
 [tools]
-go = "1.26"
+go = "1.27"
 usage = "latest"
-zig = "0.16"
+zig = "latest"
 slsa-verifier = "latest"
 minisign = "latest"
 fnox = "latest"
@@ -13,13 +13,22 @@ prettier = "latest"
 "npm:hunkdiff" = "latest"
 "npm:codex-wakatime" = "latest"
 "npm:@usebruno/cli" = { version = "latest", pnpm_args = "--allow-build=@usebruno/cli --config.node-linker=hoisted" }
-node = ["24", "lts"]
+node = "lts"
 rust = "latest"
+"npm:@openai/codex" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
+"npm:@playwright/cli" = "latest"
+cargo-binstall = "1.21.1"
+"cargo:lumen" = "2"
+"npm:@earendil-works/pi-coding-agent" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
+shellcheck = "0.11.0"
+deno = "2"
+pnpm = "path:/Users/zachfuller/Library/pnpm/bin"
 
 [tasks.build]
 run = 'echo "running build tasks"'
 
 [settings]
+minimum_release_age = "24 hours"
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
 lockfile = false
@@ -28,6 +37,7 @@ python.uv_venv_auto = "source"
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
 disable_backends = ["ubi", "asdf"]
+auto_update = true
 
 [settings.npm]
 package_manager = "pnpm"
