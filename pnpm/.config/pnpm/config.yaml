@@ -1,0 +1,3 @@
+blockExoticSubdeps: true
+enableGlobalVirtualStore: true
+minimumReleaseAge: 60
