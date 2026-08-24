@@ -49,7 +49,7 @@ search_mode = "fuzzy"
 ## in any directory within a git repository tree (default: false).
 ##
 ## To use workspace mode by default when available, set this to true and
-## set filter_mode to "workspace" or leave it unspecified and 
+## set filter_mode to "workspace" or leave it unspecified and
 ## set search.filters to include "workspace" before other filter modes.
 # workspaces = false
 
@@ -231,10 +231,11 @@ records = true
 
 [daemon]
 ## Enables using the daemon to sync. Requires the daemon to be running in the background. Start it with `atuin daemon`
-# enabled = false
+enabled = true
+autostart = true
 
 ## How often the daemon should sync in seconds
-# sync_frequency = 300
+sync_frequency = 45
 
 ## The path to the unix socket used by the daemon (on unix systems)
 ## linux/mac: ~/.local/share/atuin/atuin.sock
