@@ -15,6 +15,7 @@ pane_gaps = true
 agent_panel_sort = "spaces"
 accent = "cyan"
 
+status_indicators = "symbols"
 [ui.sidebar.agents]
 row_gap = 1
 rows = [["state_icon", "workspace", "tab"], ["agent", "state_text"]]
@@ -86,3 +87,8 @@ description = "run lazygit"
 [experimental]
 pane_history = true
 switch_ascii_input_source_in_prefix = true
+kitty_graphics = true
+
+[theme]
+name = "catppuccin"
+auto_switch = false
