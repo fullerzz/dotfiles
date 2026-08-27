@@ -6,8 +6,8 @@ getantidote/use-omz
 # Add completion functions before zsh-autocomplete initializes compinit.
 zsh-users/zsh-completions kind:fpath path:src
 
-# Load the last known-working zsh-autocomplete revision before plugins that call compdef.
-marlonrichert/zsh-autocomplete pin:20f6c34f20270084b21211428afb6d2534aae8e9
+# Load the latest stable zsh-autocomplete revision before plugins that call compdef.
+marlonrichert/zsh-autocomplete pin:52ce8176d280d58a4a2af6a829d2266fffae568c
 
 # frameworks like oh-my-zsh are supported
 ohmyzsh/ohmyzsh path:lib
