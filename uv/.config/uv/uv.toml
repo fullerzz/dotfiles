@@ -1,4 +1,23 @@
-python-downloads = "manual"
+python-downloads = "automatic"
 python-preference = "system"
+link-mode = "hardlink"
+exclude-newer = "18 hours"
+preview-features = [
+  "adjust-ulimit",
+  "audit-command",
+  "cache-physical-space",
+  "cache-size",
+  "check-command",
+  "format-command",
+  "malware-check",
+  "native-auth",
+  "json-output",
+  "tool-install-locks",
+  "venv-safe-clear"
+]
 
-exclude-newer = "12 hours"
+[pip]
+strict = true
+verify-hashes = true
+link-mode = "hardlink"
+
