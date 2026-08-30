@@ -1,0 +1,9 @@
+default_profile = "default"
+
+[[profile]]
+name = "default"
+aliases = ["d"]
+host = "https://komodo.baxterboi.com"
+
+# API credentials are loaded from macOS Keychain via zsh/.zshrc.
+# Do not store key or secret values in this file.
