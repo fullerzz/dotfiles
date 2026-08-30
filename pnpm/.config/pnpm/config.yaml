@@ -1,3 +1,4 @@
 blockExoticSubdeps: true
 enableGlobalVirtualStore: true
 minimumReleaseAge: 60
+packageImportMethod: hardlink
