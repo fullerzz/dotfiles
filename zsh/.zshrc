@@ -27,13 +27,20 @@ if type brew &>/dev/null; then
   FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
 fi
 
-# nvm
-#zstyle ':omz:plugins:nvm' lazy yes
-#zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript pnpm bun npx ng
 # antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+
+# Look for a file telling us it's been over a week since we last updated.
+# If found, delete it so we know to run antidote update.
+find $(antidote home) -name '.up2date' -maxdepth 1 -type f -mtime +7 -delete
+if [[ ! -r $(antidote home)/.up2date ]]; then
+  antidote update
+  touch $(antidote home)/.up2date
+fi
+
 antidote load
 
 fpath+=~/.zfunc
@@ -50,7 +57,7 @@ source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.bin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Don't show suggesstions for git commands
 zstyle ':autocomplete:*' ignored-input 'git *'
-zstyle ':autocomplete:*' delay 0.2  # seconds (float)
+zstyle ':autocomplete:*' delay 0.1  # seconds (float)
 zstyle ':autocomplete:*' min-input 2
 zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES / 3 )) )'
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
@@ -83,14 +90,14 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# Load Angular CLI autocompletion.
-# source <(ng completion script)
-
 # zoxide
 eval "$(zoxide init zsh)"
 
 # add ~/bin to PATH
 export PATH="$HOME/bin:$HOME/Go/bin:$PATH"
+
+# Amp CLI
+export PATH="$HOME/.amp/bin:$PATH"
 
 # AWS
 export AWS_DEFAULT_REGION="us-west-1"
@@ -133,10 +140,10 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
-    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+    cd|z)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset)   fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)            fzf --preview 'dig {}'                   "$@" ;;
+    *)              fzf --preview 'bat -n --color=always {}' "$@" ;;
   esac
 }
 source <(fzf --zsh)
@@ -168,11 +175,8 @@ eval "$(fnox activate zsh)"
 # docker
 export COMPOSE_BAKE=true
 
-#iterm2 shell integration
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # carapace
-export LS_COLORS=$(vivid generate dracula)
+export LS_COLORS=$(vivid generate catppuccin-mocha)
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
@@ -210,12 +214,9 @@ alias agentvm='limactl shell agent-dev'
 alias agentvm-stop='limactl stop agent-dev'
 alias agentvm-restart='limactl restart agent-dev'
 
-# fastfetch
-fastfetch -c examples/10.jsonc
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
-# Amp CLI
-export PATH="$HOME/.amp/bin:$PATH"
+# fastfetch
+fastfetch -c examples/10.jsonc
