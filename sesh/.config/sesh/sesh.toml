@@ -6,3 +6,6 @@ preview_command = "eza --all --git --icons=always --group-directories-first --co
 [[session]]
 name = "dotfiles"
 path = "~/dotfiles"
+
+[tui]
+show_icons = true
