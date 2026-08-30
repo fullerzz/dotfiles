@@ -1,4 +1,4 @@
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_verbosity = "medium"
 model_reasoning_summary = "auto"
 model_supports_reasoning_summaries = true
@@ -14,6 +14,8 @@ notify = [
 ]
 approvals_reviewer = "guardian_subagent"
 default_permissions = "dev"
+service_tier = "default"
+plan_mode_reasoning_effort = "xhigh"
 
 [features]
 unified_exec = true
@@ -23,9 +25,24 @@ memories = true
 terminal_resize_reflow = true
 goals = true
 js_repl = false
+default_mode_request_user_input = true
 
 [tui]
 notifications = true
+status_line = [
+  "model-with-reasoning",
+  "git-branch",
+  "pull-request-number",
+  "branch-changes",
+  "run-state",
+  "context-used",
+  "five-hour-limit",
+  "task-progress",
+  "permissions",
+  "approval-mode",
+  "fast-mode",
+]
+status_line_use_colors = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
@@ -78,9 +95,46 @@ trust_level = "trusted"
 [projects."/Users/zachfuller/dotfiles"]
 trust_level = "trusted"
 
+[projects."/Users/zachfuller/Documents/Codex/2026-06-22/he"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-06-22/hel"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Go/herdr-plugin-sesh"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/OSS/herdr"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/OSS/herdr-worktrees"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-01/giv"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Go/agent-status-bubble-tui"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Misc/setup-scripts"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-05/hel"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-05/hel-2"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-05/i"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "bunx"
 args = ["-y", "@upstash/context7-mcp"]
+enabled = false
 
 [mcp_servers.time]
 command = "uvx"
@@ -97,27 +151,34 @@ enabled = false
 
 [mcp_servers.node_repl]
 args = []
-command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
-NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
-NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/zachfuller/.codex"
 CODEX_HOME = "/Users/zachfuller/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "2c20141b13bec5a64cd2874d8e2df011430d5b1a70e4f5425aa10d01743311a8"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,9f3594de71104f9f06015712cef546902a47ab57709ebf93db6e6081d8e92364"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.616.51431"
-CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+BROWSER_USE_CODEX_APP_VERSION = "26.707.31123"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.obscura]
 enabled = true
 command = "obscura"
 args = ["mcp", "--stealth"]
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
 
 [notice]
 hide_gpt5_1_migration_prompt = true
@@ -141,30 +202,47 @@ enabled = true
 [plugins."codex-security@openai-curated"]
 enabled = true
 
-[plugins."browser@openai-bundled"]
-enabled = true
-
 [plugins."pdf@openai-primary-runtime"]
 enabled = true
 
 [plugins."ponytail@ponytail"]
 enabled = true
 
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."agent-status-bubble@agent-status-bubble"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
 [marketplaces.openai-bundled]
-last_updated = "2026-06-21T13:54:04Z"
+last_updated = "2026-07-09T21:53:22Z"
 source_type = "local"
 source = "/Users/zachfuller/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-06-20T03:53:17Z"
+last_updated = "2026-07-01T07:03:30Z"
 source_type = "local"
 source = "/Users/zachfuller/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [marketplaces.ponytail]
-last_updated = "2026-06-21T02:14:05Z"
-last_revision = "6da37bfa7d0282522c7785759f4d2f1544015354"
+last_updated = "2026-07-09T18:06:52Z"
+last_revision = "523e9dc051a073a85592e74c1f292ac93e3633da"
 source_type = "git"
 source = "https://github.com/DietrichGebert/ponytail.git"
+
+[marketplaces.agent-status-bubble]
+last_updated = "2026-07-05T03:32:30Z"
+source_type = "local"
+source = "/Users/zachfuller/Code/Go/agent-status-bubble-tui/plugin-codex"
 
 [hooks.state]
 
@@ -199,10 +277,28 @@ trusted_hash = "sha256:195e73e498a4cdb40bbe765719d39371ac72c0ebb084fee1beee9d28d
 trusted_hash = "sha256:f79c8de133c1109b841f9835a9d032231900a0d96ecf5f6d1866132df5ca4aa4"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:session_start:0:0"]
-trusted_hash = "sha256:195e73e498a4cdb40bbe765719d39371ac72c0ebb084fee1beee9d28d21fb7a0"
+trusted_hash = "sha256:10e0ac0497512b279dc2b073d0d559fb9fb252bc18b9c943d2f0a6d58152b1f4"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:f79c8de133c1109b841f9835a9d032231900a0d96ecf5f6d1866132df5ca4aa4"
+trusted_hash = "sha256:2a3c9015a1fe10f0809ffec8da3d67c326e27c38ebf720725099283b1e2085a8"
+
+[hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:subagent_start:0:0"]
+trusted_hash = "sha256:4765354e31cc783c9cc7379f8beac7ac7ff68743c3cd7dad333d1f6a64e7a6f3"
+
+[hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:af820c20d2ac00213612d589a59e3a6017448d1b4ad64cdaaf6b03e1037469c7"
+
+[hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:d236697da7e6fb6707d25793d6e00b6caad62dcb1efabe0c1116d6a15e49f3da"
+
+[hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:stop:0:0"]
+trusted_hash = "sha256:fc55ce9857b2c2f92a1974fd376cd2a8994e36cab281db23ab636b9e5c225dc4"
+
+[hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:subagent_start:0:0"]
+trusted_hash = "sha256:800f13b04d3bea2018a097fcc7e2069acffff117ab14a3435474df63401fb6c7"
+
+[hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:subagent_stop:0:0"]
+trusted_hash = "sha256:0bf5cf52fb07da6406ec5652ee39899686447a1bbfd9bffac9a0a18876c532d3"
 
 [[hooks.Stop]]
 [[hooks.Stop.hooks]]
@@ -221,6 +317,7 @@ timeout = 60
 [memories]
 generate_memories = true
 use_memories = true
+consolidation_model = "gpt-5.6-terra"
 
 [desktop]
 appearanceDarkCodeThemeId = "catppuccin"
@@ -239,7 +336,7 @@ notifications-turn-mode = "always"
 selected-avatar-id = "rocky"
 appearanceLightCodeThemeId = "catppuccin"
 show-context-window-usage = true
-dock-icon-preference = "codex-dark"
+dock-icon-preference = "codex-system"
 hotkey-window-projectless-default-enabled = true
 
 [desktop.appearanceDarkChromeTheme]
@@ -263,9 +360,28 @@ contrast = 45
 ink = "#4c4f69"
 opaqueWindows = false
 surface = "#eff1f5"
-fonts = {}
+
+[desktop.appearanceLightChromeTheme.fonts]
+code = "'BerkeleyMono Nerd Font Mono'"
 
 [desktop.appearanceLightChromeTheme.semanticColors]
 diffAdded = "#40a02b"
 diffRemoved = "#d20f39"
 skill = "#8839ef"
+
+[sandbox_workspace_write]
+network_access = true
+exclude_slash_tmp = false
+exclude_tmpdir_env_var = false
+writable_roots = [
+  "/Users/zachfuller/.cache/bun",
+  "/Users/zachfuller/.cache/uv",
+  "/Users/zachfuller/.cache/prek",
+  "/Users/zachfuller/Code/Go",
+  "/Users/zachfuller/Code/Node",
+  "/Users/zachfuller/Code/Python",
+  "/Users/zachfuller/Library/Caches/go-build",
+  "/Users/zachfuller/Library/Caches/mise",
+  "/Users/zachfuller/Library/pnpm/store/v11",
+  "/Users/zachfuller/go/pkg/mod",
+]
