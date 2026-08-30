@@ -17,12 +17,13 @@ node = "lts"
 rust = "latest"
 "npm:@openai/codex" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
 "npm:@playwright/cli" = "latest"
-cargo-binstall = "1.21.1"
+cargo-binstall = "1.22.0"
 "cargo:lumen" = "2"
 "npm:@earendil-works/pi-coding-agent" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
 shellcheck = "0.11.0"
 deno = "2"
 pnpm = "path:/Users/zachfuller/Library/pnpm/bin"
+"npm:@tobilu/qmd" = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
