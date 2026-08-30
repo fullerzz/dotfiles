@@ -2,4 +2,20 @@ python-downloads = "automatic"
 python-preference = "system"
 
 exclude-newer = "24 hours"
-preview-features = ["json-output", "pylock", "format", "malware-check"]
+preview-features = [
+    "audit-command",
+    "cache-physical-space",
+    "cache-size",
+    "check-command",
+    "format-command",
+    "malware-check",
+    "native-auth",
+    "json-output",
+    "tool-install-locks",
+    "venv-safe-clear",
+]
+
+[pip]
+strict = true
+verify-hashes = true
+link-mode = "hardlink"
