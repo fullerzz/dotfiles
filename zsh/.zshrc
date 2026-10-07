@@ -11,10 +11,14 @@ BREW_PREFIX=$(brew --prefix)
 export PATH="$BREW_PREFIX/opt/openssh/bin:$PATH"
 export PATH=$HOME/bin:$HOME/.bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
+export PATH="$HOME/Library/Application Support/mbx/bin:$PATH"
 export EDITOR="code --wait"
-export PONYTAIL_DEFAULT_MODE="lite"
+export PONYTAIL_DEFAULT_MODE="full"
 export XDG_CONFIG_HOME=$HOME/.config
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+export LOKI_ADDR=http://ser8:3100
+export GCX_TELEMETRY=disabled
+export ZSTACK_XRAY=1
 
 # load secrets from OSX keychain
 export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
@@ -107,6 +111,9 @@ export AWS_DEFAULT_REGION="us-west-1"
 # starship
 eval "$(starship init zsh)"
 
+# herdr completions
+eval "$(herdr completion zsh)"
+
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude node_modules'
 export FZF_DEFAULT_OPTS="--height ~90% --layout=reverse --inline-info --border"
@@ -149,6 +156,7 @@ _fzf_comprun() {
   esac
 }
 source <(fzf --zsh)
+[[ $PATH =~ everything.fzf ]] || PATH="$HOME/Code/OSS/everything.fzf:$PATH"
 
 
 # direnv
