@@ -1,5 +1,6 @@
+wrappers = { cargo = { command = "mbx", env = { MBX_CARGO_SHIM_MODE = "1" } } }
 [env]
-NODE_ENV = 'production'
+DO_NOT_TRACK = 1
 
 [tools]
 go = "1.27"
@@ -17,18 +18,22 @@ node = "lts"
 rust = "latest"
 "npm:@openai/codex" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
 "npm:@playwright/cli" = "latest"
-cargo-binstall = "1.22.0"
+cargo-binstall = "1.25.1"
 "cargo:lumen" = "2"
-"npm:@earendil-works/pi-coding-agent" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
+#"npm:@earendil-works/pi-coding-agent" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
 shellcheck = "0.11.0"
 deno = "2"
 pnpm = "path:/Users/zachfuller/Library/pnpm/bin"
 "npm:@tobilu/qmd" = "latest"
+mr-boxington = { version = "latest", postinstall = "mbx setup --yes" }
+"npm:defuddle" = "latest"
+"npm:knap" = "latest"
 
 [tasks.build]
 run = 'echo "running build tasks"'
 
 [settings]
+cache_prune_age = "7d"
 minimum_release_age = "24 hours"
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
@@ -42,3 +47,7 @@ auto_update = true
 
 [settings.npm]
 package_manager = "pnpm"
+
+[settings.upgrade]
+auto_prune = true
+prune_after = "1h"
