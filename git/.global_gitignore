@@ -1,6 +1,8 @@
 .DS_Store
 ehthumbs.db
 Thumbs.db
+node_modules/
+.cache
 
 # python
 __pycache__/
@@ -24,3 +26,6 @@ mise.local.toml
 .codex/environments
 .claude/worktrees
 .pi/tasks
+.humanlayer/
+
+scratch/
