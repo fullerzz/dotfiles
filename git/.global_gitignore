@@ -27,5 +27,7 @@ mise.local.toml
 .claude/worktrees
 .pi/tasks
 .humanlayer/
+.agent-work/
+.playwright-cli/
 
 scratch/
