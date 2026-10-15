@@ -1,7 +1,6 @@
-model = "gpt-5.6-sol"
+model = "gpt-6-sol"
 model_verbosity = "medium"
 model_reasoning_summary = "auto"
-model_supports_reasoning_summaries = true
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model_reasoning_effort = "high"
@@ -385,3 +384,10 @@ writable_roots = [
   "/Users/zachfuller/Library/pnpm/store/v11",
   "/Users/zachfuller/go/pkg/mod",
 ]
+
+[otel]
+environment = "dev"
+log_user_prompt = true
+exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/logs", protocol = "binary" } }
+trace_exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/traces", protocol = "binary" } }
+metrics_exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/metrics", protocol = "binary" } }
