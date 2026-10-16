@@ -3,8 +3,8 @@ if ! command -v brew &>/dev/null; then
   echo ">>> Homebrew not found. Installing..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # Apple Silicon path; Intel would be /usr/local
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 BREW_PREFIX=$(brew --prefix)
 
 # If you come from bash you might have to change your $PATH.
