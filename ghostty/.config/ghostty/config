@@ -1,6 +1,6 @@
 font-family = "FiraCode Nerd Font Retina"
 # font-family = "BerkeleyMono Nerd Font Mono"
-font-size = 18.5
+font-size = 16.5
 bold-is-bright = true
 theme = "catppuccin mocha"
 mouse-hide-while-typing = true
