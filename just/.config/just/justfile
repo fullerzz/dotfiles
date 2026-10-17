@@ -99,3 +99,26 @@ agentvm-restore: agentvm-stop agentvm-delete
     @echo "\n♻️{{ BOLD + MAGENTA }} Restoring lima agent-dev VM baseline snapshot...{{ NORMAL }}"
     tar -C ~/.lima -xzf ~/agent-dev-clean-baseline.tgz
     limactl start agent-dev
+
+# download, verify, and install an obscura release (default: latest, if ≥3 days old)
+[group('obscura')]
+update-obscura TAG="latest":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    obscura --version || true
+    repo=h4ckf0r0day/obscura asset=obscura-aarch64-macos.tar.gz
+    if [ "{{ TAG }}" = latest ]; then path=releases/latest; else path=releases/tags/{{ TAG }}; fi
+    read -r tag published digest < <(gh api "repos/$repo/$path" --jq "[.tag_name, .published_at, (.assets[] | select(.name == \"$asset\") | .digest)] | @tsv")
+    age_days=$(( ($(date -u +%s) - $(date -ju -f %Y-%m-%dT%H:%M:%SZ "$published" +%s)) / 86400 ))
+    # cooldown: supply-chain compromises are usually caught within days
+    if [ "{{ TAG }}" = latest ] && (( age_days < 3 )); then
+        echo "{{ BOLD + YELLOW }}$tag is only $age_days day(s) old; wait or pass an explicit tag{{ NORMAL }}"; exit 1
+    fi
+    echo "📥{{ BOLD + CYAN }} Downloading obscura $tag...{{ NORMAL }}"
+    tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    gh release download "$tag" -R "$repo" -p "$asset" -D "$tmp"
+    echo "${digest#sha256:}  $tmp/$asset" | shasum -a 256 -c -
+    tar xzf "$tmp/$asset" -C "$tmp" obscura obscura-worker
+    install -m 755 "$tmp/obscura" "$tmp/obscura-worker" ~/.bin/
+    echo "✅{{ BOLD + GREEN }} Obscura updated to $tag!{{ NORMAL }}"
+    obscura --version
