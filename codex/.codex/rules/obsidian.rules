@@ -1,0 +1,9 @@
+prefix_rule(
+    pattern = [[
+        "obsidian",
+        "/Applications/Obsidian.app/Contents/MacOS/obsidian",
+        "/Applications/Obsidian.app/Contents/MacOS/Obsidian",
+    ]],
+    decision = "allow",
+    justification = "Obsidian CLI aborts during macOS app registration inside the sandbox.",
+)
