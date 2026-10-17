@@ -1,9 +1,9 @@
-model = "gpt-6-sol"
-model_verbosity = "medium"
+model = "gpt-6-astra"
+model_verbosity = "low"
 model_reasoning_summary = "auto"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 personality = "pragmatic"
 notify = [
   "/Users/zachfuller/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
@@ -24,6 +24,7 @@ memories = true
 terminal_resize_reflow = true
 goals = true
 js_repl = false
+local_thread_store_compression = true
 default_mode_request_user_input = true
 
 [tui]
@@ -42,9 +43,13 @@ status_line = [
   "fast-mode",
 ]
 status_line_use_colors = true
+screen_reader_detection_done = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+"gpt-5.6-sol" = 4
+gpt-6-astra = 4
+"gpt-6.1-sol" = 4
 
 [permissions.dev]
 description = "Permissions for development purposes. These permissions are more permissive than the default and should be used with caution. They allow Codex to read from and write to specified directories on your filesystem, which can be useful for testing and development but may pose security risks if misused."
@@ -130,6 +135,120 @@ trust_level = "trusted"
 [projects."/Users/zachfuller/Documents/Codex/2026-07-05/i"]
 trust_level = "trusted"
 
+[projects."/Users/zachfuller/Documents/Codex/2026-07-10/hatch-pet-users-zachfuller-codex-skills"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/vscode-ext-cursor-smear"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Go/boring-computers"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-23/wha"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/litter-tmp"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-25/hel"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-07-25/computer-plugin-computer-use-openai-bundled"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/Angular/payson-buy-box"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-08-12/gi"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/OSS/uv"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-08-14/ho"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Misc"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-08-20/he"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/herdr-visualizer"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/komodo-proxy"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-08-23/let-s-set-up-a-scheduled"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/mise-up-troubleshoot"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-08-25/how"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/OSS/camofox-browser"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-08-30/co"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Python/tmp-xplor"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/.ssh"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Node/Angular/personal-site"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Rust/skills-audit"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/.codex/skills"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Infra/pangolin-scratch"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-09-10/how"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Python/skill-toks"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Documents/Codex/2026-09-14/c"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/.agents/skills"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Docs/homelab-wiki"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Go/bench-runner"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Python/agent-syncer"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Misc/zachs-agent-skills"]
+trust_level = "trusted"
+
+[projects."/private/tmp/pstack native mfsMRA/target repo"]
+trust_level = "trusted"
+
+[projects."/private/tmp/pstack review ZfE8TP/target repo"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Python/busy-apps"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "bunx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -138,6 +257,7 @@ enabled = false
 [mcp_servers.time]
 command = "uvx"
 args = ["mcp-server-time", "--local-timezone=America/Phoenix"]
+enabled = false
 
 [mcp_servers.ng]
 command = "bunx"
@@ -157,27 +277,44 @@ startup_timeout_sec = 120
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
 NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
 NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
-NODE_REPL_TRUSTED_CODE_PATHS = "/Users/zachfuller/.codex"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/zachfuller/.codex:/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
 CODEX_HOME = "/Users/zachfuller/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,9f3594de71104f9f06015712cef546902a47ab57709ebf93db6e6081d8e92364"
-BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
-NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
-NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.707.31123"
-CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
+BROWSER_USE_CODEX_APP_VERSION = "26.1013.40934"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/zachfuller/.codex/plugins/cache/openai-bundled/browser/26.1013.40934/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+SKY_CUA_SERVICE_PATH = "/Users/zachfuller/.codex/computer-use/Codex Computer Use.app"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
 [mcp_servers.obscura]
-enabled = true
 command = "obscura"
 args = ["mcp", "--stealth"]
+
+[mcp_servers.obscura.env]
+OBSCURA_ALLOW_PRIVATE_NETWORK = "1"
 
 [mcp_servers.computer-use]
 command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
 args = ["mcp"]
 cwd = "."
-enabled = false
+
+[mcp_servers.fff]
+command = "/opt/homebrew/bin/fff-mcp"
+
+[mcp_servers.camofox-browser]
+command = "node"
+args = ["/Users/zachfuller/Code/OSS/camofox-browser/mcp/server.mjs"]
+
+[mcp_servers.camofox-browser.env]
+CAMOFOX_BASE_URL = "http://127.0.0.1:9377"
+
+[mcp_servers.plannotator-inbox]
+command = "plannotator"
+args = ["inbox", "mcp"]
 
 [notice]
 hide_gpt5_1_migration_prompt = true
@@ -213,35 +350,59 @@ enabled = true
 [plugins."agent-status-bubble@agent-status-bubble"]
 enabled = true
 
-[plugins."sites@openai-bundled"]
+[plugins."visualize@openai-bundled"]
 enabled = true
 
-[plugins."visualize@openai-bundled"]
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
 enabled = true
 
 [plugins."browser@openai-bundled"]
 enabled = true
 
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."spark-cli-skills@spark-codex-marketplace"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."code-review@openai-bundled"]
+enabled = true
+
+[plugins."zstack@zstack-local"]
+enabled = true
+
 [marketplaces.openai-bundled]
-last_updated = "2026-07-09T21:53:22Z"
 source_type = "local"
 source = "/Users/zachfuller/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-01T07:03:30Z"
 source_type = "local"
 source = "/Users/zachfuller/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [marketplaces.ponytail]
-last_updated = "2026-07-09T18:06:52Z"
-last_revision = "523e9dc051a073a85592e74c1f292ac93e3633da"
+last_updated = "2026-08-12T16:39:47Z"
+last_revision = "2ed6c52c9d7e5e56942508591085fd45dea277d3"
 source_type = "git"
 source = "https://github.com/DietrichGebert/ponytail.git"
 
 [marketplaces.agent-status-bubble]
-last_updated = "2026-07-05T03:32:30Z"
+last_updated = "2026-07-11T00:25:52Z"
 source_type = "local"
 source = "/Users/zachfuller/Code/Go/agent-status-bubble-tui/plugin-codex"
+
+[marketplaces.spark-codex-marketplace]
+source_type = "git"
+source = "https://github.com/readdle/spark-codex-marketplace.git"
+
+[marketplaces.zstack-local]
+source_type = "local"
+source = "/Users/zachfuller/Code/Misc/zachs-agent-skills"
 
 [hooks.state]
 
@@ -259,9 +420,11 @@ trusted_hash = "sha256:c25ace5459375242db902e45bf3d5fbd2434096a716e9bfcf0d99971e
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:user_prompt_submit:0:0"]
 trusted_hash = "sha256:1cf1e18abb1565fd44765758b1f87ad8fd5404cc8b35b2bb7330832df0c07c37"
+enabled = false
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:stop:1:0"]
 trusted_hash = "sha256:d25b65c767f85263d1d7aa5d0feb07189008b068984062d21a9adfee7e18a8ea"
+enabled = false
 
 [hooks.state."/Users/zachfuller/.codex/config.toml:post_tool_use:0:0"]
 trusted_hash = "sha256:4d8799d3ca0e642c0c8079063f1c0214a71e47039bdd8a3d82f90f1fdeba06fa"
@@ -276,13 +439,13 @@ trusted_hash = "sha256:195e73e498a4cdb40bbe765719d39371ac72c0ebb084fee1beee9d28d
 trusted_hash = "sha256:f79c8de133c1109b841f9835a9d032231900a0d96ecf5f6d1866132df5ca4aa4"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:session_start:0:0"]
-trusted_hash = "sha256:10e0ac0497512b279dc2b073d0d559fb9fb252bc18b9c943d2f0a6d58152b1f4"
+trusted_hash = "sha256:55a39116e94ed8399271043701d3e9b8859aee77c30ef85529e7eab067d8acd9"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:2a3c9015a1fe10f0809ffec8da3d67c326e27c38ebf720725099283b1e2085a8"
+trusted_hash = "sha256:29dcb3bf3cd3d77af301058521d2fd4e414c523345f8fe70942f7f30027acc94"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:subagent_start:0:0"]
-trusted_hash = "sha256:4765354e31cc783c9cc7379f8beac7ac7ff68743c3cd7dad333d1f6a64e7a6f3"
+trusted_hash = "sha256:6e210f506560ddd14e490c7dd80623572d504b8f0cfcf8c64c4d4c2ab4d23ae1"
 
 [hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:session_start:0:0"]
 trusted_hash = "sha256:af820c20d2ac00213612d589a59e3a6017448d1b4ad64cdaaf6b03e1037469c7"
@@ -298,6 +461,52 @@ trusted_hash = "sha256:800f13b04d3bea2018a097fcc7e2069acffff117ab14a3435474df634
 
 [hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:subagent_stop:0:0"]
 trusted_hash = "sha256:0bf5cf52fb07da6406ec5652ee39899686447a1bbfd9bffac9a0a18876c532d3"
+
+[hooks.state."/Users/zachfuller/Code/OSS/uv/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:7e2cdfb1fb7afdf198c8937daa82c1456bc495c55ad423132dbe19388d5a60d2"
+
+[hooks.state."/Users/zachfuller/Code/OSS/uv/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:ee805f193371603d80dd74d5977556c7a652ebded690e957a37d80a27568dbde"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:session_start:1:0"]
+trusted_hash = "sha256:fbfeeeb33cfc43b173808a4a08c8dfffdd317266642bbb7aa8b7d2313cfcf0f5"
+enabled = false
+
+[hooks.state."browser@openai-bundled:plugin.json#hooks[0]:stop:0:0"]
+trusted_hash = "sha256:317a07045dfc95aef2e80c55428a2f817e2768be867e3b1ef29a73da8636ae7f"
+
+[hooks.state."chrome@openai-bundled:plugin.json#hooks[0]:stop:0:0"]
+trusted_hash = "sha256:317a07045dfc95aef2e80c55428a2f817e2768be867e3b1ef29a73da8636ae7f"
+
+[hooks.state."zstack@zstack-local:hooks/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:79d5f4c5a303aacd8db15d7298c247455fb195393ada57779e52c243c4eab2ce"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:de94b952e71f2a699b8c8c04920e4731b7924f88c7986977de80fd3d55ff33dd"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:post_tool_use:0:0"]
+trusted_hash = "sha256:a26632a8c0cf975d014b26640f76805430d972f052213359a1bf8081d1da6acb"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:pre_compact:0:0"]
+trusted_hash = "sha256:671c51c7c20f93639f3769cf3db6b68e03a086dabc95d1b91deb0b9795245a17"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:post_compact:0:0"]
+trusted_hash = "sha256:fd70b03d3ed056ca7dd072d8406b576a79a3b96bd98a052bc704889a0f2af01b"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:session_start:0:0"]
+trusted_hash = "sha256:dc45640a586dd983007b30938e56c4b856b0bf5b98eb71dd620ddb444b9f187a"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:session_end:0:0"]
+trusted_hash = "sha256:72261b8d37c9124d3b4e2e0d12036ea9bad3ca0b67343af66dd7cde5531b73f9"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:subagent_start:0:0"]
+trusted_hash = "sha256:f1225ac9c045a61e662d49d86619dcec8d3bc8b3981cb558d01659233337ae28"
+
+[hooks.state."zstack@zstack-local:hooks/codex.json:subagent_stop:0:0"]
+trusted_hash = "sha256:f3e8179748b9b38fe776501b7f7fd90ee59923726dbd7f1afedf940c9c83150c"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:interrupt:0:0"]
+trusted_hash = "sha256:74ec929f02f7a202a9f1e537a2022787589e61ee0f6140bb890d649fcb67571c"
 
 [[hooks.Stop]]
 [[hooks.Stop.hooks]]
@@ -316,7 +525,13 @@ timeout = 60
 [memories]
 generate_memories = true
 use_memories = true
-consolidation_model = "gpt-5.6-terra"
+
+[otel]
+environment = "dev"
+log_user_prompt = true
+exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/logs", protocol = "binary" } }
+trace_exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/traces", protocol = "binary" } }
+metrics_exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/metrics", protocol = "binary" } }
 
 [desktop]
 appearanceDarkCodeThemeId = "catppuccin"
@@ -332,11 +547,20 @@ git-pull-request-merge-method = "squash"
 git-show-sidebar-pr-icons = true
 git-commit-instructions = "Use semantic commit prefixes in git commit messages."
 notifications-turn-mode = "always"
-selected-avatar-id = "rocky"
+selected-avatar-id = "pet_6abfbb065c6c8191a950211e25f7cc20"
 appearanceLightCodeThemeId = "catppuccin"
 show-context-window-usage = true
 dock-icon-preference = "codex-system"
 hotkey-window-projectless-default-enabled = true
+enabled-reasoning-efforts = ["low", "medium", "high", "xhigh", "ultra", "max"]
+worktree-keep-count = 10
+localeOverride = "en-US"
+composerEnterBehavior = "cmdIfMultiline"
+appearanceDiffMarkerStyle = "color"
+dictationDictionary = ["Forgejo", "SER8", "uv"]
+toys-confetti-enabled = true
+agent-usage-reset-enabled = true
+worktree-upstream-refresh-mode = "best-effort"
 
 [desktop.appearanceDarkChromeTheme]
 accent = "#cba6f7"
@@ -375,7 +599,6 @@ exclude_tmpdir_env_var = false
 writable_roots = [
   "/Users/zachfuller/.cache/bun",
   "/Users/zachfuller/.cache/uv",
-  "/Users/zachfuller/.cache/prek",
   "/Users/zachfuller/Code/Go",
   "/Users/zachfuller/Code/Node",
   "/Users/zachfuller/Code/Python",
@@ -385,9 +608,16 @@ writable_roots = [
   "/Users/zachfuller/go/pkg/mod",
 ]
 
-[otel]
-environment = "dev"
-log_user_prompt = true
-exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/logs", protocol = "binary" } }
-trace_exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/traces", protocol = "binary" } }
-metrics_exporter = { otlp-http = { endpoint = "http://ser8:4318/v1/metrics", protocol = "binary" } }
+[shell_environment_policy.set]
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "9230e2bd8b24b7ac7a0ba6774c64bf0d78ecdabbdd91d0ed627b02a587bae2df"
+
+[apps.connector_76869538009648d5b282a4bb21c3d157.tools."github.create_pull_request"]
+approval_mode = "approve"
+
+[[skills.config]]
+path = "/Users/zachfuller/.codex/skills/hatch-pet/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/zachfuller/.agents/skills/adev-writing-guide/SKILL.md"
+enabled = false
