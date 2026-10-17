@@ -88,3 +88,45 @@ agentvm-restore: agentvm-stop agentvm-delete
     @echo "\n♻️{{ BOLD + MAGENTA }} Restoring lima agent-dev VM baseline snapshot...{{ NORMAL }}"
     tar -C ~/.lima -xzf ~/agent-dev-clean-baseline.tgz
     limactl start agent-dev
+
+# download, verify, and install an obscura release (default: latest, if ≥3 days old)
+[group('obscura')]
+update-obscura TAG="latest":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    obscura --version || true
+    repo=h4ckf0r0day/obscura
+    case "$(uname -s)" in
+        Darwin) os=macos; install_dir="$HOME/.bin" ;;
+        Linux) os=linux; install_dir="$HOME/.local/bin" ;;
+        *) echo "Unsupported OS: $(uname -s)" >&2; exit 1 ;;
+    esac
+    case "$(uname -m)" in
+        arm64|aarch64) arch=aarch64 ;;
+        x86_64) arch=x86_64 ;;
+        *) echo "Unsupported architecture: $(uname -m)" >&2; exit 1 ;;
+    esac
+    asset="obscura-$arch-$os.tar.gz"
+    if [ "{{ TAG }}" = latest ]; then path=releases/latest; else path=releases/tags/{{ TAG }}; fi
+    read -r tag published digest < <(gh api "repos/$repo/$path" --jq "[.tag_name, .published_at, (.assets[] | select(.name == \"$asset\") | .digest)] | @tsv")
+    # GNU/uutils date accepts -d; macOS BSD date uses -j -f.
+    if published_epoch=$(date -u -d "$published" +%s 2>/dev/null); then
+        :
+    else
+        published_epoch=$(date -ju -f %Y-%m-%dT%H:%M:%SZ "$published" +%s)
+    fi
+    now_epoch=$(date -u +%s)
+    age_days=$(( (now_epoch - published_epoch) / 86400 ))
+    # cooldown: supply-chain compromises are usually caught within days
+    if [ "{{ TAG }}" = latest ] && (( age_days < 3 )); then
+        echo "{{ BOLD + YELLOW }}$tag is only $age_days day(s) old; wait or pass an explicit tag{{ NORMAL }}"; exit 1
+    fi
+    echo "📥{{ BOLD + CYAN }} Downloading obscura $tag...{{ NORMAL }}"
+    tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    gh release download "$tag" -R "$repo" -p "$asset" -D "$tmp"
+    echo "${digest#sha256:}  $tmp/$asset" | shasum -a 256 -c -
+    tar xzf "$tmp/$asset" -C "$tmp" obscura obscura-worker
+    mkdir -p "$install_dir"
+    install -m 755 "$tmp/obscura" "$tmp/obscura-worker" "$install_dir/"
+    echo "✅{{ BOLD + GREEN }} Obscura updated to $tag!{{ NORMAL }}"
+    obscura --version
