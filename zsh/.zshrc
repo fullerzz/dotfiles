@@ -64,6 +64,7 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 
 export UV_MALWARE_CHECK=1
+export OBSCURA_ALLOW_PRIVATE_NETWORK=1
 
 # carapace
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
