@@ -130,3 +130,15 @@ update-obscura TAG="latest":
     install -m 755 "$tmp/obscura" "$tmp/obscura-worker" "$install_dir/"
     echo "✅{{ BOLD + GREEN }} Obscura updated to $tag!{{ NORMAL }}"
     obscura --version
+    printf '\n📝{{ BOLD + CYAN }} Release notes for %s{{ NORMAL }}\n' "$tag"
+    if gh release view "$tag" -R "$repo" --json body --jq .body > "$tmp/release-notes.md"; then
+        if [ -z "$(cat "$tmp/release-notes.md")" ]; then
+            echo "No release notes provided."
+        elif command -v glow >/dev/null 2>&1; then
+            glow "$tmp/release-notes.md" || cat "$tmp/release-notes.md"
+        else
+            cat "$tmp/release-notes.md"
+        fi
+    else
+        echo "Could not fetch release notes for $tag." >&2
+    fi
