@@ -1,10 +1,10 @@
 [env]
-NODE_ENV = 'production'
+DO_NOT_TRACK = 1
 
 [tools]
-go = "1.26"
+go = "1.27"
 usage = "latest"
-zig = "0.16"
+zig = "0.17"
 slsa-verifier = "latest"
 minisign = "latest"
 fnox = "latest"
@@ -12,20 +12,51 @@ aube = "latest"
 prettier = "latest"
 "npm:codex-wakatime" = "latest"
 "npm:@usebruno/cli" = { version = "latest", pnpm_args = "--allow-build=@usebruno/cli --config.node-linker=hoisted" }
-node = ["24", "lts"]
+node = "lts"
 rust = "latest"
-lazygit = "0.62.2"
-"cargo:difftastic" = "0.69.0"
-zoxide = "0.9.9"
-neovim = "0.12.3"
+lazygit = "0.66.1"
+"cargo:difftastic" = "0.71.0"
+zoxide = "0.10.0"
+neovim = "0.12.6"
 starship = "latest"
 "cargo:mergiraf" = "latest"
 bat = "latest"
+#"npm:@openai/codex" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
+"npm:opencode-ai" = "latest"
+"npm:@github/copilot" = "latest"
+ripgrep = "latest"
+ast-grep = "latest"
+fastfetch = "latest"
+"cargo:forgejo-cli" = "0.6.0"
+bun = "latest"
+just = "1.58.0"
+btop = "latest"
+"github:wakatime/wakatime-cli" = { version = "latest", exe = "wakatime-cli", rename_exe = "wakatime-cli" }
+lazydocker = "0.25.2"
+"aqua:fish-shell/fish-shell" = "latest"
+eza = "latest"
+cargo-binstall = "1.25.3"
+pnpm = "12"
+#"cargo:file:///home/zach/.local/src/crates-mirror" = "rev:1e298d63b9d82897ee50cd17e7673a1bfb1d84d7"
+carapace = "latest"
+atuin = "latest"
+gh = "latest"
+glow = "3.0.0"
+"npm:@angular/cli" = "22"
+mr-boxington = "latest"
+fzf = "0.74.5"
+"npm:defuddle" = "latest"
+"npm:knap" = "latest"
+
+[wrappers.cargo]
+command = "mbx"
+env = { MBX_CARGO_SHIM_MODE = "1" }
 
 [tasks.build]
 run = 'echo "running build tasks"'
 
 [settings]
+cache_prune_age = "7d"
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
 lockfile = false
@@ -34,6 +65,11 @@ python.uv_venv_auto = "source"
 gpg_verify = true
 trusted_config_paths = ["~/Code/*"]
 disable_backends = ["ubi", "asdf"]
+auto_update = true
 
 [settings.npm]
 package_manager = "pnpm"
+
+[settings.upgrade]
+auto_prune = true
+prune_after = "1h"
