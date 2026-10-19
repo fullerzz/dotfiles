@@ -31,3 +31,5 @@ mise.local.toml
 .playwright-cli/
 
 scratch/
+
+**/.claude/.cc-writes/
