@@ -1,0 +1,29 @@
+# Standalone development tools.
+prefix_rule(
+    pattern = [["ruff", "mypy", "rg", "fd", "sg"]],
+    decision = "allow",
+)
+
+# Selected Go commands.
+prefix_rule(
+    pattern = ["go", ["test", "build", "vet", "fmt", "list", "mod"]],
+    decision = "allow",
+)
+
+# Selected uv commands.
+prefix_rule(
+    pattern = ["uv", ["run", "sync", "lock", "tree"]],
+    decision = "allow",
+)
+
+# Read-only mise inspection.
+prefix_rule(
+    pattern = ["mise", ["ls", "which", "where", "version", "doctor"]],
+    decision = "allow",
+)
+
+# Ask before installing tools or executing through mise.
+prefix_rule(
+    pattern = ["mise", ["install", "use", "exec", "run"]],
+    decision = "prompt",
+)

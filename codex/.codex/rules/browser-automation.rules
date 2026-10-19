@@ -1,0 +1,33 @@
+# Review direct Chrome launches outside the Codex sandbox.
+prefix_rule(
+    pattern = ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"],
+    decision = "prompt",
+    justification = "Avoid macOS GUI startup failures inside the Codex sandbox.",
+)
+
+# Review Playwright launches, including its browser subprocesses.
+prefix_rule(
+    pattern = [[
+        "playwright-cli",
+        "/Users/zachfuller/.local/share/mise/shims/playwright-cli",
+        "playwright",
+    ]],
+    decision = "prompt",
+    justification = "Run browser automation outside the Codex sandbox.",
+)
+
+# Common package-runner invocation forms.
+prefix_rule(
+    pattern = ["npx", ["playwright", "playwright-cli", "@playwright/cli"]],
+    decision = "prompt",
+)
+
+prefix_rule(
+    pattern = ["npx", "--no-install", "playwright"],
+    decision = "prompt",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "exec", ["playwright", "playwright-cli"]],
+    decision = "prompt",
+)
