@@ -19,6 +19,7 @@ export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAge
 export LOKI_ADDR=http://ser8:3100
 export GCX_TELEMETRY=disabled
 export ZSTACK_XRAY=1
+export T3CODE_TELEMETRY_ENABLED=false
 
 # load secrets from OSX keychain
 export GITHUB_MCP_TOKEN=$(security find-generic-password -s "Github-PAC-OpenCode" -w 2>/dev/null)
@@ -190,6 +191,11 @@ export LS_COLORS=$(vivid generate catppuccin-mocha)
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
+
+# rex completions
+if command -v rex >/dev/null 2>&1; then
+  eval "$(rex completion zsh)"
+fi
 
 # Use Homebrew SSH with proper agent setup
 # if ! pgrep -f "ssh-agent" > /dev/null; then
