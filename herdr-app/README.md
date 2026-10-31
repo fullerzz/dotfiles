@@ -39,6 +39,29 @@ Stow with `--no-folding` as above so generated type files and optional
 machine-specific `local.json` stay outside the repo. The popup runs Atuin and
 local Git commands; it lists up to 80 recent threads before filtering by space.
 
+## Eza Files panel
+
+The `personal` layout is a clone of Herdr's shipped `main` layout (0.1.10). Its
+only change is that the right-hand **Files** panel uses the `eza-files` mod
+instead of the shipped `files` mod. Herdr replaces shipped layouts and mods on
+every start, so the change needs both clones. Switch with
+`herdr-app do layout.switch --name personal` (or **Ctrl+Shift+L**).
+
+`eza-files` is the shipped `files` mod with Nerd Font icons and colors from
+`eza -1 -a --icons=always --color=always`. Colors follow `LS_COLORS` or eza's
+theme, mapped onto the Herdr theme's ANSI colors where eza emits basic colors.
+`eza` runs on the space's machine in the same shell call as the folder listing.
+Without `eza`, or for names eza escapes, rows fall back to the shipped SVG
+icons. Glyphs use the terminal font from `settings.json` (a Nerd Font); set
+`ICON_FONT` in `main.js` to override it. Windows folders keep the SVG icons.
+
+Shipped layout updates do not reach `personal`. To rebase after a Herdr update,
+re-clone `main` and point the `files` block's `content.mod` to `eza-files`.
+
+Validate with `herdr-app check ~/.config/herdr-app/mods/eza-files` and
+`node --test herdr-app/tests/eza-files.test.mjs` (set `EZA_DIR` to eza's folder
+if `eza` on PATH is a shim that cannot run).
+
 ## Tmux prefix
 
 Press **Ctrl+A**, then a key: `c` opens a tab, `%` / `"` split right / down,
