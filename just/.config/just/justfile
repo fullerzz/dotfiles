@@ -59,7 +59,8 @@ send-it:
 # install specified python version using pyenv
 pyenv-install PYTHON_VERSION:
     @echo "\n🐍{{ BOLD + BLUE }} Installing optimized build of Python {{ PYTHON_VERSION }}...{{ NORMAL }}"
-    PYTHON_CFLAGS='-march=native -mtune=native' CONFIGURE_OPTS='--enable-optimizations --with-lto' pyenv install {{ PYTHON_VERSION }} --verbose
+    PYENV_BUILD_ROOT="$HOME/.cache/pyenv-build" PYTHON_CFLAGS='-march=native -mtune=native' CONFIGURE_OPTS='--enable-optimizations --with-lto' pyenv install {{ PYTHON_VERSION }} --verbose
+    ccache --show-stats
 
 # start the lima agent-dev VM
 [group('lima')]
@@ -122,3 +123,15 @@ update-obscura TAG="latest":
     install -m 755 "$tmp/obscura" "$tmp/obscura-worker" ~/.bin/
     echo "✅{{ BOLD + GREEN }} Obscura updated to $tag!{{ NORMAL }}"
     obscura --version
+
+# open Shibi volumne on UNAS-2
+[group('unas2')]
+open-shibi:
+    @echo "\n🔓{{ BOLD + MAGENTA }} Opening Shibi volume on UNAS-2...{{ NORMAL }}"
+    open 'smb://zach@192.168.1.137/Shibi'
+
+# check if the Shibi volume is mounted on UNAS-2
+[group('unas2')]
+check-shibi:
+    @echo "\n🔍{{ BOLD + MAGENTA }} Checking Shibi volume on UNAS-2...{{ NORMAL }}"
+    mount -t smbfs | grep -F '/Shibi on /Volumes/'
