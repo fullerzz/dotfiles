@@ -1,6 +1,6 @@
 # Herdr App
 
-Personal settings, keybindings, the Catppuccin theme, and the Atuin Threads mod, stored under
+Personal settings, keybindings, the Catppuccin theme, and personal mods, stored under
 `.config/herdr-app/` for GNU Stow.
 
 From the dotfiles repository:
@@ -38,3 +38,26 @@ and run `herdr-app check ~/.config/herdr-app/mods/atuin-threads`.
 Stow with `--no-folding` as above so generated type files and optional
 machine-specific `local.json` stay outside the repo. The popup runs Atuin and
 local Git commands; it lists up to 80 recent threads before filtering by space.
+
+## Tmux prefix
+
+Press **Ctrl+A**, then a key: `c` opens a tab, `%` / `"` split right / down,
+`n` / `p` switch tabs, `h j k l` or arrows focus panes, `J` / `K` switch
+spaces, and `z` toggles zoom. `?` shows all bindings; Escape cancels.
+Repeatable actions allow another key within 500 ms.
+
+**Ctrl+A Ctrl+A** sends literal Ctrl+A to the terminal (for example, shell
+beginning-of-line). Ctrl+B remains available to terminal programs. This replaces
+the `legacy-keys` Ctrl+A opener with the new mod's bindings; the local legacy mod
+remains installed for its other uses, including Alt+G.
+
+Vendored from [herdrdev/herdr-layout-examples/tmux-prefix](https://github.com/herdrdev/herdr-layout-examples/tree/ed4eda7a02e255191203df0ff04b9dc7ae56e1ad/tmux-prefix)
+at commit `ed4eda7a02e255191203df0ff04b9dc7ae56e1ad`, with its Apache-2.0 license.
+Local changes replace Ctrl+B with Ctrl+A in the keybindings, key handler,
+literal-key forwarding, and displayed hints. Preserve those changes on updates.
+
+Install with the Stow command above, then validate with
+`herdr-app check ~/.config/herdr-app/mods/tmux-prefix`.
+The mod runs `hc keys` to forward literal keys, including to remote terminals.
+During repeats, only simple ASCII keys and basic navigation keys are replayed;
+shifted symbols, Unicode, and modified shortcuts are not replayed.
