@@ -18,7 +18,7 @@ node = "lts"
 rust = "latest"
 "npm:@openai/codex" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
 "npm:@playwright/cli" = "latest"
-cargo-binstall = "1.25.3"
+cargo-binstall = "1.26.1"
 "cargo:lumen" = "2"
 #"npm:@earendil-works/pi-coding-agent" = { version = "latest", minimum_release_age = "1 hour", allow_builds = true }
 shellcheck = "0.11.0"
@@ -28,6 +28,8 @@ pnpm = "path:/Users/zachfuller/Library/pnpm/bin"
 mr-boxington = { version = "latest", postinstall = "mbx setup --yes" }
 "npm:defuddle" = "latest"
 "npm:knap" = "latest"
+java = "lts"
+"github:akitaonrails/ai-memory" = "3.3.0"
 
 [tasks.build]
 run = 'echo "running build tasks"'
