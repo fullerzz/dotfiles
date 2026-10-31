@@ -46,6 +46,11 @@ Press **Ctrl+A**, then a key: `c` opens a tab, `%` / `"` split right / down,
 spaces, and `z` toggles zoom. `?` shows all bindings; Escape cancels.
 Repeatable actions allow another key within 500 ms.
 
+**Ctrl+A, Shift+G** opens lazygit in a floating terminal using the focused
+terminal's current directory and its space's machine. Press `q` in lazygit or
+click **Close** to exit; closing the overlay ends its lazygit process. Requires
+`lazygit` on that machine. Alt+G retains the existing legacy split behavior.
+
 **Ctrl+A Ctrl+A** sends literal Ctrl+A to the terminal (for example, shell
 beginning-of-line). Ctrl+B remains available to terminal programs. This replaces
 the `legacy-keys` Ctrl+A opener with the new mod's bindings; the local legacy mod
@@ -54,10 +59,13 @@ remains installed for its other uses, including Alt+G.
 Vendored from [herdrdev/herdr-layout-examples/tmux-prefix](https://github.com/herdrdev/herdr-layout-examples/tree/ed4eda7a02e255191203df0ff04b9dc7ae56e1ad/tmux-prefix)
 at commit `ed4eda7a02e255191203df0ff04b9dc7ae56e1ad`, with its Apache-2.0 license.
 Local changes replace Ctrl+B with Ctrl+A in the keybindings, key handler,
-literal-key forwarding, and displayed hints. Preserve those changes on updates.
+literal-key forwarding, and displayed hints, and add floating lazygit.
+Preserve those changes on updates.
 
 Install with the Stow command above, then validate with
 `herdr-app check ~/.config/herdr-app/mods/tmux-prefix`.
 The mod runs `hc keys` to forward literal keys, including to remote terminals.
 During repeats, only simple ASCII keys and basic navigation keys are replayed;
 shifted symbols, Unicode, and modified shortcuts are not replayed.
+
+Run the launch/cleanup regression check with `node --test herdr-app/tests/tmux-prefix.test.mjs`.
