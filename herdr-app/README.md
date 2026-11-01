@@ -42,8 +42,8 @@ local Git commands; it lists up to 80 recent threads before filtering by space.
 ## Eza Files panel
 
 The `personal` layout is a clone of Herdr's shipped `main` layout (0.1.10). Its
-only change is that the right-hand **Files** panel uses the `eza-files` mod
-instead of the shipped `files` mod. Herdr replaces shipped layouts and mods on
+right-hand **Files** panel uses the `eza-files` mod and **Changes** uses
+`difftastic-changes`. Herdr replaces shipped layouts and mods on
 every start, so the change needs both clones. Switch with
 `herdr-app do layout.switch --name personal` (or **Ctrl+Shift+L**).
 
@@ -92,3 +92,22 @@ During repeats, only simple ASCII keys and basic navigation keys are replayed;
 shifted symbols, Unicode, and modified shortcuts are not replayed.
 
 Run the launch/cleanup regression check with `node --test herdr-app/tests/tmux-prefix.test.mjs`.
+
+## Difftastic Changes panel
+
+`difftastic-changes` clones Herdr's Changes mod (0.1.11), keeping its file list,
+refresh behavior, and commit controls. Git runs the configured `diff.external`
+(`difft` here) with colored inline output. The panel preserves difftastic's line
+numbers, colors, and syntax emphasis; Git still supplies the file counts.
+Untracked files compare against `/dev/null`. Previews show at most 1,500 lines
+and 4,000 visible characters per line, with a truncation notice.
+
+The `personal` layout references this mod. For another personal layout, set the
+Changes block's `content.mod` to `difftastic-changes`. Clones do not receive
+upstream mod updates. Requires `env`, Git, and the configured external diff on
+the space's machine (macOS/Linux); external tool errors appear in the preview.
+The existing Commit button still stages all changes and commits them.
+
+Validate with `node --test herdr-app/tests/difftastic-changes.test.mjs` and
+`herdr-app check ~/.config/herdr-app/mods/difftastic-changes`. Run the checker on
+the installed directory so its generated type files stay outside dotfiles.
