@@ -98,7 +98,7 @@
           },
           "window_drag": true,
           "content": {
-            "mod": "tabs"
+            "mod": "personal-tabs"
           }
         },
         {
@@ -164,6 +164,15 @@
                       "content": {
                         "mod": "difftastic-changes"
                       }
+                    },
+                    {
+                      "id": "atuin-threads",
+                      "type": "block",
+                      "content": {
+                        "mod": "atuin-threads"
+                      },
+                      "radius": 10,
+                      "background": "chrome"
                     }
                   ]
                 }

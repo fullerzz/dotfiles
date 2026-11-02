@@ -25,12 +25,27 @@ and `git diff` before assuming those edits reached this repository.
 
 ## Atuin Threads
 
-Press **Cmd+Shift+T** to open the threads popup. Click a session to resume it in
-a new tab; Shift-click to fork it. Requires Atuin 18.24.3 or later with threads
-enabled (`atuin config enable threads`).
+The `personal` layout has a **Threads** button beside **Files** and **Changes**
+that opens the right panel. Click it again to hide the panel; the selection is
+remembered per space. **Cmd+Shift+T** also opens the threads popup. Click a
+session to resume it in a new tab; Shift-click to fork it. Requires Atuin
+18.24.3 or later with threads enabled (`atuin config enable threads`).
 
-Vendored unchanged from [atuinsh/herdr-atuin-threads](https://github.com/atuinsh/herdr-atuin-threads)
+`personal-tabs` clones Herdr's shipped tab bar (0.1.12) to add the Threads
+button. It does not receive upstream tab bar updates automatically.
+
+The button uses the supplied full-color Atuin turtle, saved as
+`mods/atuin-threads/atuin-turtle.svg`. Herdr's image loader skips symlinked
+assets, so after Stow, create its local rendering copy from the dotfiles repo:
+
+```sh
+mkdir -p "$HOME/.config/herdr-app/art"
+install -m 644 herdr-app/.config/herdr-app/mods/atuin-threads/atuin-turtle.svg "$HOME/.config/herdr-app/art/atuin-turtle.svg"
+```
+
+Vendored from [atuinsh/herdr-atuin-threads](https://github.com/atuinsh/herdr-atuin-threads)
 at commit `6e2786d1ae7555cbe4c338c55c265badc86812cb`, with its MIT license.
+Local styling adds 10px rounded corners with clipped contents; preserve it on updates.
 To update, copy upstream's `main.js`, `mod.json`, and `threads.svg` into
 `.config/herdr-app/mods/atuin-threads/`, retain the license, update this revision,
 and run `herdr-app check ~/.config/herdr-app/mods/atuin-threads`.

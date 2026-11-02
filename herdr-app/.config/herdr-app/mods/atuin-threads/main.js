@@ -213,6 +213,8 @@ export default class Threads extends View {
       .id("root")
       .size_full()
       .bg(t.chrome)
+      .rounded(10)
+      .overflow_hidden()
       .text_size(12.5)
       .child(this.header(t, here, mine.length, cx))
       .child(div().flex_1().min_h(0).flex().flex_col().child(body));
