@@ -1,14 +1,14 @@
 {
-  "zoom": 1,
+  "zoom": 1.0,
   "sounds": {
     "enabled": false
   },
-  "minimum_contrast": 1,
-  "theme": "catppuccin",
+  "font": "BerkeleyMono Nerd Font Mono",
+  "font_size": 15.0,
+  "minimum_contrast": 1.0,
   "appearance": "dark",
+  "theme": "catppuccin",
   "colors": {
     "accent": "#89dceb"
-  },
-  "font": "BerkeleyMono Nerd Font Mono",
-  "font_size": 15
+  }
 }
