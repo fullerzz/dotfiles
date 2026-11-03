@@ -274,3 +274,9 @@ filters = ["workspace", "global", "host", "session", "directory"]
 
 [threads]
 capture = true
+
+[pty_proxy]
+enabled = true
+
+[output]
+enabled = true
