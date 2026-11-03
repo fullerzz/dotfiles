@@ -19,6 +19,7 @@ function setup({ machine = null, cwd = '/repo with spaces', result, delayed = fa
     closeOverlay: () => order.push('close'),
     openOverlay: spec => { order.push('open'); overlays.push(spec); },
     notify: message => notices.push(message),
+    run: (command, args) => { order.push('run'); calls.push([command, { ...args }]); },
     hc: args => {
       calls.push(Array.from(args));
       if (args[0] === 'kill') return Promise.resolve({ code: 0 });
@@ -29,6 +30,13 @@ function setup({ machine = null, cwd = '/repo with spaces', result, delayed = fa
   const cx = { notify() {}, stop_propagation() {} };
   return { view, cx, calls, overlays, notices, order, resolve };
 }
+
+test('t opens Atuin Threads after dismissing the prefix', () => {
+  const s = setup();
+  s.view.key({ key: 't', modifiers: {} }, s.cx);
+  assert.deepEqual(s.order, ['close', 'run']);
+  assert.deepEqual(s.calls, [['mod.open', { name: 'atuin-threads' }]]);
+});
 
 test('Shift+G launches in the current directory and closes prefix before focusing overlay', async () => {
   const s = setup();

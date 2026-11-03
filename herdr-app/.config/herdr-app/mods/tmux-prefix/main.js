@@ -9,6 +9,8 @@ const REPEAT_MS = 500;
 const BINDINGS = [
   ["c", "New tab", "tab.new"],
   ["G", "Floating lazygit", "lazygit"],
+  ["t", "Atuin Threads", "mod.open", { name: "atuin-threads" }],
+  ["T", "Sesh picker", "mod.open", { name: "sesh" }],
   ["%", "Split right", "pane.split", { direction: "right" }],
   ['"', "Split down", "pane.split", { direction: "down" }],
   ["x", "Close pane", "pane.close"],
