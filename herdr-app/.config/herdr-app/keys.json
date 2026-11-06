@@ -5,6 +5,7 @@
     "cmd-alt-h": "app.hide_others",
     "cmd-t": "tab.new",
     "cmd-shift-t": "mod.open:atuin-threads",
+    "cmd-shift-k": "mod.open:komodo",
     "cmd-w": "tab.close",
     "ctrl-tab": "tab.next",
     "ctrl-shift-tab": "tab.prev",
