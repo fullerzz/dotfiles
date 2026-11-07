@@ -10,6 +10,8 @@ rex.bind("f2", "client.tab.rename")
 rex.bind("shift+f2", "session.rename")
 rex.bind("cmd+alt+]", "session.next")
 rex.bind("cmd+alt+[", "session.previous")
+rex.bind("shift+left", "client.tab.previous")
+rex.bind("shift+right", "client.tab.next")
 
 rex.bind("ctrl+a>c", "client.tab.new")
 rex.bind("ctrl+a>n", "client.tab.next")
