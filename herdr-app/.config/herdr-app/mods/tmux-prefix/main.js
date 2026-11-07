@@ -19,7 +19,7 @@ const BINDINGS = [
   ["h", "Focus left", "pane.go", { direction: "left" }, true],
   ["j", "Focus down", "pane.go", { direction: "down" }, true],
   ["k", "Focus up", "pane.go", { direction: "up" }, true],
-  ["l", "Focus right", "pane.go", { direction: "right" }, true],
+  ["l", "Last workspace", "mod.open", { name: "sesh-last" }],
   ["left", "Focus left", "pane.go", { direction: "left" }, true],
   ["down", "Focus down", "pane.go", { direction: "down" }, true],
   ["up", "Focus up", "pane.go", { direction: "up" }, true],
