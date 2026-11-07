@@ -15,7 +15,7 @@ rex.bind("shift+right", "client.tab.next")
 
 rex.bind("ctrl+a>c", "client.tab.new")
 rex.bind("ctrl+a>n", "client.tab.next")
-rex.bind("ctrl+a>p", "client.tab.previous")
+rex.bind("ctrl+a>p", "pane.go_to")
 rex.bind("ctrl+a>shift+5", "pane.split", { direction = "right" })
 rex.bind("ctrl+a>shift+'", "pane.split", { direction = "down" })
 rex.bind("ctrl+a>z", "pane.zoom")
