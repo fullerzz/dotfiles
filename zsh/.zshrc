@@ -159,7 +159,6 @@ _fzf_comprun() {
 source <(fzf --zsh)
 [[ $PATH =~ everything.fzf ]] || PATH="$HOME/Code/OSS/everything.fzf:$PATH"
 
-
 # direnv
 eval "$(direnv hook zsh)"
 
@@ -207,11 +206,11 @@ fi
 #     ssh-add -l | grep -q "ED25519-SK" || ssh-add ~/.ssh/id_ed25519_sk 2>/dev/null
 # fi
 
-
 eval $(thefuck --alias)
 alias cd="z"
 alias clear="clear -x"
 alias cat="bat -pp"
+alias claude-cm='CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1 claude'
 #alias grep="rg"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons=always $@'
