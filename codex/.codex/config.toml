@@ -24,24 +24,12 @@ memories = true
 terminal_resize_reflow = true
 goals = true
 js_repl = false
-local_thread_store_compression = true
+local_thread_store_compression = false
 default_mode_request_user_input = true
 
 [tui]
 notifications = true
-status_line = [
-  "model-with-reasoning",
-  "git-branch",
-  "pull-request-number",
-  "branch-changes",
-  "run-state",
-  "context-used",
-  "five-hour-limit",
-  "task-progress",
-  "permissions",
-  "approval-mode",
-  "fast-mode",
-]
+status_line = ["model-with-reasoning", "git-branch", "pull-request-number", "branch-changes", "run-state", "context-used", "five-hour-limit", "task-progress", "permissions", "approval-mode", "fast-mode", "estimated-thread-cost"]
 status_line_use_colors = true
 screen_reader_detection_done = true
 
@@ -249,6 +237,27 @@ trust_level = "trusted"
 [projects."/Users/zachfuller/Code/Python/busy-apps"]
 trust_level = "trusted"
 
+[projects."/Users/zachfuller/Code/OSS/scrawl"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Stacks/ai-memory"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Misc/herdr-zstack"]
+trust_level = "trusted"
+
+[projects."/private/tmp/herdr-zstack-pilot-20261031"]
+trust_level = "trusted"
+
+[projects."/private/tmp/herdr-zstack-roster-20261031"]
+trust_level = "trusted"
+
+[projects."/private/tmp/herdr-swarm-13/base"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/.cache/herdr-zstack/seat14/base"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "bunx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -271,6 +280,7 @@ enabled = false
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
+env_vars = ["BROWSER_USE_ACCESS_EXECUTOR_ID", "BROWSER_USE_ACCESS_PIPE_PATH", "BROWSER_USE_ACCESS_VERIFYING_IDENTITY"]
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
@@ -285,8 +295,8 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.1013.40934"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/zachfuller/.codex/plugins/cache/openai-bundled/browser/26.1013.40934/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.1029.61003"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/zachfuller/.codex/plugins/cache/openai-bundled/browser/26.1029.61003/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/zachfuller/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
@@ -315,6 +325,41 @@ CAMOFOX_BASE_URL = "http://127.0.0.1:9377"
 [mcp_servers.plannotator-inbox]
 command = "plannotator"
 args = ["inbox", "mcp"]
+
+[mcp_servers.ai-memory]
+url = "http://127.0.0.1:49374/mcp"
+default_tools_approval_mode = "approve"
+
+[mcp_servers.ai-memory.http_headers]
+Authorization = "Bearer 57e629bcb4a5e3d9c4fa7a377d6ca901374490b910db5e8e7739eadd6b9ceb40"
+
+[mcp_servers.ai-memory.tools.memory_delete_page]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_feedback]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_forget_sweep]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_handoff_accept]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_handoff_cancel]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_message_cancel]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_message_pop]
+approval_mode = "prompt"
+
+[mcp_servers.ai-memory.tools.memory_restore_page]
+approval_mode = "prompt"
+
+[mcp_servers.atuin]
+command = "/opt/homebrew/bin/atuin"
+args = ["mcp"]
 
 [notice]
 hide_gpt5_1_migration_prompt = true
@@ -371,7 +416,7 @@ enabled = true
 [plugins."unified-computer-use@openai-bundled"]
 enabled = true
 
-[plugins."code-review@openai-bundled"]
+[plugins."herdr-zstack@herdr-zstack-local"]
 enabled = true
 
 [plugins."zstack@zstack-local"]
@@ -404,13 +449,17 @@ source = "https://github.com/readdle/spark-codex-marketplace.git"
 source_type = "local"
 source = "/Users/zachfuller/Code/Misc/zachs-agent-skills"
 
+[marketplaces.herdr-zstack-local]
+source_type = "local"
+source = "/Users/zachfuller/Code/Misc/herdr-zstack"
+
 [hooks.state]
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:stop:0:0"]
 trusted_hash = "sha256:1a9324c21b5fa9bccb488fc366f9d83df8e92374d4faaa179ee490fcfba1e386"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:pre_tool_use:0:0"]
-trusted_hash = "sha256:e1deabbcea0311202b3202cc34db64b637bcfbb0f34783fc99e60d8335acea1a"
+trusted_hash = "sha256:8fa26ccff2520def9d697f49115ba6f4c62d4329b1267517c28b7c87ec68535a"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:permission_request:0:0"]
 trusted_hash = "sha256:3a82ee1e42cbf5c5f5fe8edccbf6f70517b1cf8c7643b4f9725144980b653257"
@@ -419,12 +468,12 @@ trusted_hash = "sha256:3a82ee1e42cbf5c5f5fe8edccbf6f70517b1cf8c7643b4f9725144980
 trusted_hash = "sha256:c25ace5459375242db902e45bf3d5fbd2434096a716e9bfcf0d99971e8dc641f"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:1cf1e18abb1565fd44765758b1f87ad8fd5404cc8b35b2bb7330832df0c07c37"
-enabled = false
+trusted_hash = "sha256:fcc6c6385dca97213a38e1660dd6c8c8c48b2c489c11d1a66108e8a63c35af64"
+enabled = true
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:stop:1:0"]
-trusted_hash = "sha256:d25b65c767f85263d1d7aa5d0feb07189008b068984062d21a9adfee7e18a8ea"
-enabled = false
+trusted_hash = "sha256:38d169ef0d1f2a13b83c3ed32fa4450513eb5ddb9f98b9f2abcce2dd4c5840a9"
+enabled = true
 
 [hooks.state."/Users/zachfuller/.codex/config.toml:post_tool_use:0:0"]
 trusted_hash = "sha256:4d8799d3ca0e642c0c8079063f1c0214a71e47039bdd8a3d82f90f1fdeba06fa"
@@ -439,13 +488,16 @@ trusted_hash = "sha256:195e73e498a4cdb40bbe765719d39371ac72c0ebb084fee1beee9d28d
 trusted_hash = "sha256:f79c8de133c1109b841f9835a9d032231900a0d96ecf5f6d1866132df5ca4aa4"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:session_start:0:0"]
-trusted_hash = "sha256:55a39116e94ed8399271043701d3e9b8859aee77c30ef85529e7eab067d8acd9"
+trusted_hash = "sha256:defea43402fc8edba23234c694a1117cf80efc2da38968a40a1004cd9d63f725"
+trusted_content_hash = "sha256:a0efee48a77d1aa4a657fb21bb1f387a66f5fd8ddc31e59ae4f13dd486e9a793"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:29dcb3bf3cd3d77af301058521d2fd4e414c523345f8fe70942f7f30027acc94"
+trusted_hash = "sha256:5aa5ec474e0bb546f207794993b37fdf7507e54a64e09216be164c5b7b42a197"
+trusted_content_hash = "sha256:a0efee48a77d1aa4a657fb21bb1f387a66f5fd8ddc31e59ae4f13dd486e9a793"
 
 [hooks.state."ponytail@ponytail:hooks/claude-codex-hooks.json:subagent_start:0:0"]
-trusted_hash = "sha256:6e210f506560ddd14e490c7dd80623572d504b8f0cfcf8c64c4d4c2ab4d23ae1"
+trusted_hash = "sha256:5b2c1dfa8c7ecc5e8881c8e69479f65d46ed727e0bc5b8e7b4553cee9e5c3daf"
+trusted_content_hash = "sha256:a0efee48a77d1aa4a657fb21bb1f387a66f5fd8ddc31e59ae4f13dd486e9a793"
 
 [hooks.state."agent-status-bubble@agent-status-bubble:hooks/hooks.json:session_start:0:0"]
 trusted_hash = "sha256:af820c20d2ac00213612d589a59e3a6017448d1b4ad64cdaaf6b03e1037469c7"
@@ -469,8 +521,8 @@ trusted_hash = "sha256:7e2cdfb1fb7afdf198c8937daa82c1456bc495c55ad423132dbe19388
 trusted_hash = "sha256:ee805f193371603d80dd74d5977556c7a652ebded690e957a37d80a27568dbde"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:session_start:1:0"]
-trusted_hash = "sha256:fbfeeeb33cfc43b173808a4a08c8dfffdd317266642bbb7aa8b7d2313cfcf0f5"
-enabled = false
+trusted_hash = "sha256:7ac16f27c7b29bec5952047d0a2193dc7595d731faca5a12c3c476194bd2d532"
+enabled = true
 
 [hooks.state."browser@openai-bundled:plugin.json#hooks[0]:stop:0:0"]
 trusted_hash = "sha256:317a07045dfc95aef2e80c55428a2f817e2768be867e3b1ef29a73da8636ae7f"
@@ -495,6 +547,7 @@ trusted_hash = "sha256:fd70b03d3ed056ca7dd072d8406b576a79a3b96bd98a052bc704889a0
 
 [hooks.state."zstack@zstack-local:hooks/codex.json:session_start:0:0"]
 trusted_hash = "sha256:dc45640a586dd983007b30938e56c4b856b0bf5b98eb71dd620ddb444b9f187a"
+trusted_content_hash = "sha256:1c9048770094cfbc3b5f6815bd54abb715fc54fac5dbe803a9caec11d9b83186"
 
 [hooks.state."zstack@zstack-local:hooks/codex.json:session_end:0:0"]
 trusted_hash = "sha256:72261b8d37c9124d3b4e2e0d12036ea9bad3ca0b67343af66dd7cde5531b73f9"
@@ -507,6 +560,24 @@ trusted_hash = "sha256:f3e8179748b9b38fe776501b7f7fd90ee59923726dbd7f1afedf940c9
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:interrupt:0:0"]
 trusted_hash = "sha256:74ec929f02f7a202a9f1e537a2022787589e61ee0f6140bb890d649fcb67571c"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:ca06990a76f91e15b1f12a6faa533df2745afd6d690118e95eeea7d574b86470"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:pre_compact:0:0"]
+trusted_hash = "sha256:1fcc1fbcd271d085e018fdf90d85f17905c372f2b92544ab3b076ee30d1853ad"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:session_end:0:0"]
+trusted_hash = "sha256:72a01b77439a252eda3b049e0c47d0eb20f1fd05aed3331e05551e6ce72a32d6"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:session_start:2:0"]
+trusted_hash = "sha256:3f60932dd887dd2300cd0a08ada10c83c1c36f6adebb4c2aea4f7a2e18f87fc1"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:pre_tool_use:1:0"]
+trusted_hash = "sha256:035aa5680c8e6290dbc732ca5e93c8bb68b7b261c264544bbc7989a1ebc4c1cb"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:post_tool_use:1:0"]
+trusted_hash = "sha256:54375cdbf1c165664dd27cb28468c04530e4faaec45144c6093f532e3de7dcc5"
 
 [[hooks.Stop]]
 [[hooks.Stop.hooks]]
@@ -561,6 +632,8 @@ dictationDictionary = ["Forgejo", "SER8", "uv"]
 toys-confetti-enabled = true
 agent-usage-reset-enabled = true
 worktree-upstream-refresh-mode = "best-effort"
+autoArchiveAfterDays = 30
+migratedFollowUpQueueToSteer = false
 
 [desktop.appearanceDarkChromeTheme]
 accent = "#cba6f7"
