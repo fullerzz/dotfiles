@@ -1,4 +1,4 @@
-model = "gpt-6-astra"
+model = "gpt-6.1-sol"
 model_verbosity = "low"
 model_reasoning_summary = "auto"
 approval_policy = "on-request"
@@ -29,7 +29,20 @@ default_mode_request_user_input = true
 
 [tui]
 notifications = true
-status_line = ["model-with-reasoning", "git-branch", "pull-request-number", "branch-changes", "run-state", "context-used", "five-hour-limit", "task-progress", "permissions", "approval-mode", "fast-mode", "estimated-thread-cost"]
+status_line = [
+  "model-with-reasoning",
+  "git-branch",
+  "pull-request-number",
+  "branch-changes",
+  "run-state",
+  "context-used",
+  "five-hour-limit",
+  "task-progress",
+  "permissions",
+  "approval-mode",
+  "fast-mode",
+  "estimated-thread-cost",
+]
 status_line_use_colors = true
 screen_reader_detection_done = true
 
@@ -258,6 +271,18 @@ trust_level = "trusted"
 [projects."/Users/zachfuller/.cache/herdr-zstack/seat14/base"]
 trust_level = "trusted"
 
+[projects."/Users/zachfuller/Code/Misc/herdr-mod-komodo"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Go/homelab-eventing"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Misc/herdr-mod-pixel-art"]
+trust_level = "trusted"
+
+[projects."/Users/zachfuller/Code/Misc/executor-app-forgejo"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "bunx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -295,8 +320,8 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.1029.61003"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/zachfuller/.codex/plugins/cache/openai-bundled/browser/26.1029.61003/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.1111.21308"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/zachfuller/.codex/plugins/cache/openai-bundled/browser/26.1111.21308/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/zachfuller/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
@@ -360,6 +385,9 @@ approval_mode = "prompt"
 [mcp_servers.atuin]
 command = "/opt/homebrew/bin/atuin"
 args = ["mcp"]
+
+[mcp_servers.executor]
+url = "https://buntu26.tail6abc8b.ts.net:4443/mcp"
 
 [notice]
 hide_gpt5_1_migration_prompt = true
@@ -459,7 +487,7 @@ source = "/Users/zachfuller/Code/Misc/herdr-zstack"
 trusted_hash = "sha256:1a9324c21b5fa9bccb488fc366f9d83df8e92374d4faaa179ee490fcfba1e386"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:pre_tool_use:0:0"]
-trusted_hash = "sha256:8fa26ccff2520def9d697f49115ba6f4c62d4329b1267517c28b7c87ec68535a"
+trusted_hash = "sha256:035aa5680c8e6290dbc732ca5e93c8bb68b7b261c264544bbc7989a1ebc4c1cb"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:permission_request:0:0"]
 trusted_hash = "sha256:3a82ee1e42cbf5c5f5fe8edccbf6f70517b1cf8c7643b4f9725144980b653257"
@@ -468,11 +496,11 @@ trusted_hash = "sha256:3a82ee1e42cbf5c5f5fe8edccbf6f70517b1cf8c7643b4f9725144980
 trusted_hash = "sha256:c25ace5459375242db902e45bf3d5fbd2434096a716e9bfcf0d99971e8dc641f"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:fcc6c6385dca97213a38e1660dd6c8c8c48b2c489c11d1a66108e8a63c35af64"
+trusted_hash = "sha256:c07c4a228e0f96c78f9c35ce809a28c17c601848bca63788cf22087692e71457"
 enabled = true
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:stop:1:0"]
-trusted_hash = "sha256:38d169ef0d1f2a13b83c3ed32fa4450513eb5ddb9f98b9f2abcce2dd4c5840a9"
+trusted_hash = "sha256:ddaa15d37cbefa51cdb28b71a70b951e5d3d52081b309e866a7b58acea147a6c"
 enabled = true
 
 [hooks.state."/Users/zachfuller/.codex/config.toml:post_tool_use:0:0"]
@@ -547,7 +575,7 @@ trusted_hash = "sha256:fd70b03d3ed056ca7dd072d8406b576a79a3b96bd98a052bc704889a0
 
 [hooks.state."zstack@zstack-local:hooks/codex.json:session_start:0:0"]
 trusted_hash = "sha256:dc45640a586dd983007b30938e56c4b856b0bf5b98eb71dd620ddb444b9f187a"
-trusted_content_hash = "sha256:1c9048770094cfbc3b5f6815bd54abb715fc54fac5dbe803a9caec11d9b83186"
+trusted_content_hash = "sha256:87fe92c5d2ac1d1b968360f763e87f60f95f2619c985c575438140a12d6ea18a"
 
 [hooks.state."zstack@zstack-local:hooks/codex.json:session_end:0:0"]
 trusted_hash = "sha256:72261b8d37c9124d3b4e2e0d12036ea9bad3ca0b67343af66dd7cde5531b73f9"
@@ -562,22 +590,31 @@ trusted_hash = "sha256:f3e8179748b9b38fe776501b7f7fd90ee59923726dbd7f1afedf940c9
 trusted_hash = "sha256:74ec929f02f7a202a9f1e537a2022787589e61ee0f6140bb890d649fcb67571c"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:post_tool_use:0:0"]
-trusted_hash = "sha256:ca06990a76f91e15b1f12a6faa533df2745afd6d690118e95eeea7d574b86470"
+trusted_hash = "sha256:54375cdbf1c165664dd27cb28468c04530e4faaec45144c6093f532e3de7dcc5"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:pre_compact:0:0"]
-trusted_hash = "sha256:1fcc1fbcd271d085e018fdf90d85f17905c372f2b92544ab3b076ee30d1853ad"
+trusted_hash = "sha256:564aec634af4c2a745b6f09b010e26da23e0dceaf0dbd9a38b86e384d7cf830c"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:session_end:0:0"]
-trusted_hash = "sha256:72a01b77439a252eda3b049e0c47d0eb20f1fd05aed3331e05551e6ce72a32d6"
+trusted_hash = "sha256:ea5723d16537ec8efa3bf5da8b5f19329a44abf95fd034f0ccf3cc08f787298b"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:session_start:2:0"]
-trusted_hash = "sha256:3f60932dd887dd2300cd0a08ada10c83c1c36f6adebb4c2aea4f7a2e18f87fc1"
+trusted_hash = "sha256:29d765922a85a2d9d612b5c3f81cd60576396f30401231fc57c9417d85bb85ab"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:pre_tool_use:1:0"]
-trusted_hash = "sha256:035aa5680c8e6290dbc732ca5e93c8bb68b7b261c264544bbc7989a1ebc4c1cb"
+trusted_hash = "sha256:968c92cef97551cd4bee8b0fd26906eaafb3d76a75a47138acb712a5acbce3d6"
 
 [hooks.state."/Users/zachfuller/.codex/hooks.json:post_tool_use:1:0"]
-trusted_hash = "sha256:54375cdbf1c165664dd27cb28468c04530e4faaec45144c6093f532e3de7dcc5"
+trusted_hash = "sha256:24f4e5507b47b970ba96599279f24b406801ed955f91e657dce971114bfe59c8"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:session_start:3:0"]
+trusted_hash = "sha256:19ab5a92e647ac8717a56357779757c61e051f933ffacb7da1beb617925bce2c"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:subagent_start:0:0"]
+trusted_hash = "sha256:a5dfdc229df8b896b0e3928dfa8a9f89dbc492079b56981de87692eed8c76cce"
+
+[hooks.state."/Users/zachfuller/.codex/hooks.json:subagent_stop:0:0"]
+trusted_hash = "sha256:ef5d165975e9ac6eb6b123ae0771b220a5ccea5fecec642f50ead6c407ba4837"
 
 [[hooks.Stop]]
 [[hooks.Stop.hooks]]
