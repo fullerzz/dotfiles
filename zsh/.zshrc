@@ -210,7 +210,8 @@ eval $(thefuck --alias)
 alias cd="z"
 alias clear="clear -x"
 alias cat="bat -pp"
-alias claude-cm='CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1 claude'
+alias claude-cm='env -u SP CLAUDE_CODE_EXPERIMENTAL_CODE_MODE=1 claude --settings "{\"enabledPlugins\":{\"plannotator@plannotator\":false}}"'
+alias claude-adv='DO_NOT_TRACK=0 claude'
 #alias grep="rg"
 # eza aliases
 alias ls='eza --color=always --group-directories-first --icons=always $@'
